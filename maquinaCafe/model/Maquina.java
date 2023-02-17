@@ -75,7 +75,7 @@ public class Maquina {
 			this.depositoVaso --;
 			this.monedero ++;
 			if(dinero -1 == 0) {
-				resultado = "Producto servido";
+				resultado = "Producto servido.";
 			}else {
 				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-1);
 			}
@@ -96,7 +96,7 @@ public class Maquina {
 			this.depositoVaso --;
 			this.monedero += 0.8;
 			if(dinero -0.8 == 0) {
-				resultado = "Producto servido";
+				resultado = "Producto servido.";
 			}else {
 				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-0.80);
 			}
@@ -120,7 +120,7 @@ public class Maquina {
 			this.depositoCafe --;
 			this.monedero += 1.5;
 			if(dinero -1.5 == 0) {
-				resultado = "Producto servido";
+				resultado = "Producto servido.";
 			}else {
 				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-1.5);
 			}
