@@ -18,7 +18,7 @@ public class Main {
 		saldoMaquina = Double.valueOf(sc.nextLine());
 	}while(saldoMaquina < 0);
 	m.setMonedero(saldoMaquina);
-	m.llenarDepositos(50, 50, 80);
+	m.llenarDepositos();
 	while(opcion != 5) {
 		System.out.println(menu);
 		System.out.println("Introduce una opción:");

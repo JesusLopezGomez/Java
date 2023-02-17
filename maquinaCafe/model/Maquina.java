@@ -2,6 +2,10 @@ package maquinaCafe.model;
 
 public class Maquina {
 
+	private final double PRECIOCAFE=1.0;
+	private final double PRECIOLECHE=0.80;
+	private final double PRECIOCAFECONLECHE=1.5;
+	
 	private int depositoCafe = 0;
 	private int depositoLeche = 0;
 	private int depositoVaso = 0;
@@ -50,12 +54,10 @@ public class Maquina {
 		this.monedero = monedero;
 	}
 	
-	public void llenarDepositos(int depositoCafe, int depositoLeche, int depositoVaso) {
-		if(depositoCafe <= 50 && depositoLeche <= 50 && depositoVaso <= 80) {
-			this.depositoCafe = depositoCafe;
-			this.depositoLeche = depositoLeche;
-			this.depositoVaso = depositoVaso;
-		}
+	public void llenarDepositos() {
+			this.depositoCafe = 50;
+			this.depositoLeche = 50;
+			this.depositoVaso = 80;
 	}
 	
 	public void vaciarMonedero(){
@@ -73,11 +75,11 @@ public class Maquina {
 		}else {
 			this.depositoCafe --;
 			this.depositoVaso --;
-			this.monedero ++;
-			if(dinero -1 == 0) {
+			this.monedero += PRECIOCAFE;
+			if(dinero-PRECIOCAFE == 0) {
 				resultado = "Producto servido.";
 			}else {
-				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-1);
+				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-PRECIOCAFE);
 			}
 		}
 		return resultado;
@@ -94,11 +96,11 @@ public class Maquina {
 		}else {
 			this.depositoLeche --;
 			this.depositoVaso --;
-			this.monedero += 0.8;
-			if(dinero -0.8 == 0) {
+			this.monedero += PRECIOLECHE;
+			if(dinero -PRECIOLECHE == 0) {
 				resultado = "Producto servido.";
 			}else {
-				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-0.80);
+				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-PRECIOLECHE);
 			}
 		}
 		return resultado;
@@ -118,11 +120,11 @@ public class Maquina {
 			this.depositoLeche --;
 			this.depositoVaso --;
 			this.depositoCafe --;
-			this.monedero += 1.5;
-			if(dinero -1.5 == 0) {
+			this.monedero += PRECIOCAFECONLECHE;
+			if(dinero -PRECIOCAFECONLECHE == 0) {
 				resultado = "Producto servido.";
 			}else {
-				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-1.5);
+				resultado = "Producto servido, aquí tiene su cambio de: " + (dinero-PRECIOCAFECONLECHE);
 			}
 		}
 		return resultado;
