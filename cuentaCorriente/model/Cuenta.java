@@ -1,40 +1,20 @@
-package geometria.model;
+package cuentaCorriente.model;
 
 public class Cuenta {
 
-	private int retirar;
-	private int ingresar;
 	private int banco;
 	private int numReintegros = 0;
 	private int numIngresos = 0;
 	
 	
-	public Cuenta(int retirar, int ingresar, int banco, int numIngresos, int numReintegros) {
+	public Cuenta( int banco, int numIngresos, int numReintegros) {
 		super();
-		this.retirar = retirar;
-		this.ingresar = ingresar;
 		this.banco = banco;
 		this.numIngresos = numIngresos;
 		this.numReintegros = numReintegros;
 	}
 
 	public Cuenta() {}
-
-	public int getRetirar() {
-		return retirar;
-	}
-
-	public void setRetirar(int retirar) {
-		this.retirar = retirar;
-	}
-
-	public int getIngresar() {
-		return ingresar;
-	}
-
-	public void setIngresar(int ingresar) {
-		this.ingresar = ingresar;
-	}
 
 	public int getBanco() {
 		return banco;
