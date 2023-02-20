@@ -2,7 +2,7 @@ package com.ej1;
 
 import java.util.Scanner;
 
-public class Main {
+public class main {
 
 	public static void main(String[] args) {
 		Avion a = new Avion();
