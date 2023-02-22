@@ -34,20 +34,12 @@ public class Rectangulo {
 		}
 	}
 	
-	public int calcularPerimetro(int longitud, int ancho) {
-		int resultado = 0;
-		if((ancho > 0 && ancho <= 20) && (longitud > 0 && longitud <= 20)) {
-			resultado = 4* longitud;
-		}
-		return resultado;
+	public int calcularPerimetro() {
+		return  2* (this.ancho + this.longitud);
 	}
 	
-	public int calcularArea(int longitud,int ancho) {
-		int resultado = 0;
-		if((ancho > 0 && ancho <= 20) && (longitud > 0 && longitud <= 20)) {
-			resultado = ancho* longitud;
-		}
-		return resultado;
+	public int calcularArea() {
+		return (this.ancho* this.longitud);
 	}
 
 }

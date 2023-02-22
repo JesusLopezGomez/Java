@@ -10,8 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		Rectangulo r = new Rectangulo();
 		Cuenta c = new Cuenta();
-		System.out.println(r.calcularPerimetro(10, 1));
-		System.out.println(r.calcularArea(9, 10));
+		System.out.println(r.calcularPerimetro());
+		System.out.println(r.calcularArea());
 		
 	}
 
