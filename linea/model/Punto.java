@@ -1,5 +1,7 @@
 package linea.model;
 
+import java.util.Objects;
+
 public class Punto {
 
 	private double x;
@@ -56,6 +58,22 @@ public class Punto {
 	public String toString() {
 		return "Punto [x=" + x + ", y=" + y + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean resultado = false;
+		if (this == obj)
+			resultado =  true;
+		if (obj == null)
+			resultado = false;
+		if (getClass() != obj.getClass())
+			resultado = false;
+		Punto other = (Punto) obj;
+		return resultado && Double.doubleToLongBits(x) == Double.doubleToLongBits(other.x)
+				&& Double.doubleToLongBits(y) == Double.doubleToLongBits(other.y);
+	}
+	
+	
 	
 	
 

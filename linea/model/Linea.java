@@ -42,12 +42,12 @@ public class Linea {
 	}
 
 	public boolean equals(Object obj) {
-		boolean resultado = true;
+		boolean resultado = false;
 		if (this == obj)
 			resultado = true;
-		if (obj == null)
+		else if (obj == null)
 			resultado = false;
-		if (getClass() != obj.getClass())
+		else if (getClass() != obj.getClass())
 			resultado = false;
 		Linea other = (Linea) obj;
 		return resultado && Objects.equals(puntoA, other.puntoA) && Objects.equals(puntoB, other.puntoB);
