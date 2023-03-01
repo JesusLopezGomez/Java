@@ -34,11 +34,6 @@ public class Main {
 		p1.AsignarResultadoQuiniela();
 		System.out.println(p1);
 		
-		
-		
-		
-				
-
 	}
 
 }
