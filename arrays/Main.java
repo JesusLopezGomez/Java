@@ -4,25 +4,11 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import arrays.calculos.CalculosUtil;
-
-
-
+import arrays.fecha.Fecha;
 
 public class Main {
-	public static int[] desplazarNumeros(int[] numeros) {
-		int tmp = numeros[1];
-		for(int i = 0; i < numeros.length-1;i++) {
-			numeros[i+1] = numeros[i];
-			tmp = numeros[i+1];
-			
-		}
-		
-		return numeros;
-	}
 
-	
-	
-	
+
 	public static void main(String[] args) {
 		//Ejercicio 1
 		Scanner sc = new Scanner(System.in);
@@ -40,34 +26,28 @@ public class Main {
 
 		System.out.println(Arrays.toString(numeros2)+ "- Vector original");
 		
-		System.out.println(Arrays.toString(desplazarNumeros(numeros2)) + "- Vector desplazado");
-		
+		System.out.println(Arrays.toString(new CalculosUtil().desplazarNumerosDerecha(numeros2)) + "- Vector desplazado");
 		
 		//Ejercicio 3
 
-		int [] num = {1,8,9};
+		int [] num = {1,8,9,19,18,29};
 		System.out.println(new CalculosUtil().obtenerMedia(num));
+ 		System.out.println(new CalculosUtil().filtrarPorDigitoFinal(num, '9'));
+ 		System.out.println(new CalculosUtil().calcularDigitoMasTerminado(num));
+ 		 
+ 		//Ejercicio 4
  		
-		int numero11 = 352;
-		String.valueOf(numero11);
-		int sizeNumero = String.valueOf(numero11).length();
-		String.valueOf(numero11).charAt(sizeNumero-1);
-		
-		
-//		 do{
-//			System.out.println("Introduce un número para finalizar introduzca 0: ");
-//			numero = Integer.valueOf(sc.nextLine());
-//			if(numero >= 1 && numero <= 1000 && numero != 0) {
-//				contNumerosIntroducidos ++;
-//				sumaNumerosIntroducidos += numero;
-//				numeroCadena = String.valueOf(numero);
-//				numeroUltimaPosicion = numeroCadena.substring(String.valueOf(numero).length(),String.valueOf(numero).length()+1);
-//			}if(numeroUltimaPosicion.equals(0)) {
-//				
-//			}
-//		}while(numero >= 1 && numero <= 1000 && numero != 0);
-//		 System.out.println("La media de los números introducidos es de: " +  sumaNumerosIntroducidos/contNumerosIntroducidos);
-//		 
+ 		System.out.println("Introduce el dia de la fecha: ");
+ 		int dia = Integer.valueOf(sc.nextLine());
+ 		System.out.println("Introduce el mes de la fecha: ");
+ 		int mes = Integer.valueOf(sc.nextLine());
+ 		System.out.println("Introduce el año de la fecha: ");
+ 		int annio = Integer.valueOf(sc.nextLine());
+ 		Fecha f = new Fecha(dia,mes,annio);
+ 		System.out.println(f);
+ 		
+
+	 
 	
 	}
 

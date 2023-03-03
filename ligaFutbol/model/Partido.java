@@ -17,9 +17,12 @@ public class Partido {
 	}
 
 
-	public Partido(int jornada, Equipo equipoLocal, Equipo equipoVisitante) {
+	public Partido(int jornada, Equipo equipoLocal, Equipo equipoVisitante) throws ExcepcionesLigaFutbol{
 		super();
-		if(jornada >= 1 && jornada <= 38) {
+		if(jornada < 1 && jornada > 38){
+			throw new ExcepcionesLigaFutbol();
+		}
+		else if(jornada >= 1 && jornada <= 38) {
 			this.jornada = jornada;
 			this.equipoLocal = equipoLocal;
 			this.equipoVisitante = equipoVisitante;
