@@ -4,9 +4,12 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 import arrays.abecedario.LetrasAbecedario;
+import arrays.alumnos.NotasAlumnos;
 import arrays.calculos.CalculoUtils;
 import arrays.cartas.Cartas;
 import arrays.fecha.Fecha;
+import arrays.refran.Refran;
+import arrays.refran.Refranes;
 
 public class Main {
 
@@ -82,7 +85,12 @@ public class Main {
  		LetrasAbecedario l = new LetrasAbecedario();
  		l.vecesLetraEnFrase("jesus lopez gomez");
  		System.out.println(l);
-	
+ 		System.out.println("----Separación-----"); 		
+ 		//Ejercicio 7
+ 		//Este ejercicio esta realizado en el main de alumnos
+ 		String[] refranes = {"Ojo por ojo, diente por diente","Perro ladrador poco mordedor","A lo hecho, pecho"};
+
+ 		
 	}
 
 }
