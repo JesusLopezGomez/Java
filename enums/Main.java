@@ -1,6 +1,7 @@
 package enums;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import enums.model.Genero;
@@ -14,7 +15,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		Genero genero = null;
 		LocalDate fechaNacimiento = null;
-		do {
+		/*do {
 			try {
 				System.out.println("Introduce género: ");
 				String generoString = sc.nextLine();
@@ -24,8 +25,8 @@ public class Main {
 				System.out.println("Genero introducido incorrecto. (HOMBRE/MUJER)");
 			}
 			
-		}while(genero == null);
-		
+		}while(genero == null);*/
+		/*
 		do {
 			try {
 				System.out.println("Introduce el año de la fecha: ");
@@ -38,12 +39,27 @@ public class Main {
 			}catch(Exception exception) {
 				System.out.println("La fecha introducida es incorrecta");
 			}
-		}while(fechaNacimiento == null);
+		}while(fechaNacimiento == null);*/
 		
-		Persona p = new Persona("joselito","loco",genero,fechaNacimiento);
-		System.out.println(p);
-		System.out.println(p.getEdad());
+		Persona joselito = new Persona("joselito","loco",Genero.HOMBRE,LocalDate.now());
+		Persona juan = new Persona("Juan","primo",Genero.MUJER,LocalDate.now());
+		Persona manuel = new Persona("Manuel","perez",Genero.MUJER,LocalDate.now());
+		Persona josemi = new Persona("josemi","perez",Genero.HOMBRE,LocalDate.now());
+
+		Persona[] grupo = new Persona[4];
+		grupo[0] = joselito;
+		grupo[1] = juan;
+		grupo[2] = manuel;
+		grupo[3] = josemi;
+
+		System.out.println(Arrays.toString(grupo));
 		
+		Arrays.sort(grupo);
+		
+		System.out.println(Arrays.toString(grupo));
+		
+		System.out.println(juan);
+		System.out.println(juan.getEdad());
 		
 	}
 

@@ -3,7 +3,7 @@ package enums.model;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Persona {
+public class Persona implements Desplazable,Comparable<Persona>{
 
 	private String nombre;
 	private String apellidos;
@@ -22,12 +22,44 @@ public class Persona {
 		return (int) ChronoUnit.YEARS.between(fechaNacimiento, LocalDate.now());
 	}
 	
+
 	@Override
-	public String toString() {
-		return "Persona [nombre=" + nombre + ", apellidos=" + apellidos + ", genero=" + genero + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
+	public void moverse() {
+		System.out.println("Moviendome");
 	}
 
+	@Override
+	public void saltar() {
+		System.out.println("Saltando");
+	}
+
+	@Override
+	public void agacharse() {
+		System.out.println("Agachandome");
+	}
+
+	@Override
+	public void correr() {
+		System.out.println("Corriendo");
+	}
+
+	public String saludar() {
+		return "Me llamo " + this.nombre + " y tengo " + this.getEdad() + " años";
+ 	}
+
+	@Override
+	public int compareTo(Persona o) {
+		return genero.compareTo(o.genero);
+	}
+	
+	@Override
+	public String toString() {
+		return "Me llamo " + nombre + " " + apellidos + " soy " + genero + " tengo " +
+				+ getEdad() + " años.";
+	}
+	
+	
+	
 	
 	
 
