@@ -1,5 +1,6 @@
 package sieteMedia;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import sieteMedia.model.Baraja;
@@ -23,7 +24,6 @@ public class Main {
 		String sn = null;
 		double valorJugador = 0.0;
 		double valorBanca = 0.0;
-		
 		do {
 			System.out.println("¿Quieres cartas jugador? s/n:");
 			sn = sc.nextLine().toLowerCase();

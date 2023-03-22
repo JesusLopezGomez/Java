@@ -2,7 +2,7 @@ package sieteMedia.model;
 
 import java.util.Objects;
 
-public class Carta {
+public class Carta implements Comparable<Carta>{
 
 	private int numero;
 	private Palo palo;
@@ -52,6 +52,11 @@ public class Carta {
 	@Override
 	public String toString() {
 		return String.format("%s de %s", this.numero,this.palo.toString().toLowerCase());
+	}
+
+	@Override
+	public int compareTo(Carta o) {
+		return this.numero-o.numero;
 	}
 	
 }
