@@ -1,4 +1,4 @@
-package enums.model;
+package sieteMedia;
 
 import java.util.Arrays;
 
