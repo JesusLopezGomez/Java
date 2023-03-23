@@ -2,7 +2,7 @@ package parking.model;
 
 import java.time.LocalDateTime;
 
-public class Vehiculo {
+public class Vehiculo implements Comparable<Vehiculo>{
 
 	private String marca;
 	private String modelo;
@@ -46,13 +46,33 @@ public class Vehiculo {
 	public String getMatricula() {
 		return this.matricula;
 	}
+	
+	public String getMarca() {
+		return this.marca;
+	}
+	
+	public String getModelo() {
+		return this.modelo;
+	}
+	
+	public String getTipo() {
+		return this.tipoVehiculo.toString();
+	}
+	
+	public String getCombustible() {
+		return this.combustible.toString();
+	}
 
 	@Override
 	public String toString() {
-		return "Vehiculo [marca=" + marca + ", modelo=" + modelo + ", matricula=" + matricula + ", combustible="
-				+ combustible + ", fechaEntrada=" + fechaEntrada + ", tipoVehiculo=" + tipoVehiculo + "]";
+		return String.format("Tipo de vehiculo %s con marca %s, matricula %s, modelo %s, tipo de conbustible %s, y fecha de entrada %s", 
+				this.tipoVehiculo,this.marca,this.matricula,this.modelo,this.combustible,this.fechaEntrada);
 	}
-	
+
+	@Override
+	public int compareTo(Vehiculo o) {
+		return this.fechaEntrada.compareTo(o.fechaEntrada);
+	}
 	
 	
 
