@@ -8,8 +8,7 @@ import arrays.alumnos.NotasAlumnos;
 import arrays.calculos.CalculoUtils;
 import arrays.cartas.Cartas;
 import arrays.fecha.Fecha;
-import arrays.refran.Refran;
-import arrays.refran.Refranes;
+
 
 public class Main {
 
@@ -88,9 +87,8 @@ public class Main {
  		System.out.println("----Separación-----"); 		
  		//Ejercicio 7
  		//Este ejercicio esta realizado en el main de alumnos
- 		String[] refranes = {"Ojo por ojo, diente por diente","Perro ladrador poco mordedor","A lo hecho, pecho"};
-
  		
+ 		//Ejercicio 8
 	}
 
 }

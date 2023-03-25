@@ -15,7 +15,7 @@ public class main {
 		((Delegado)p).estudiar();
 		((Estudiante)p).estudiar();
 		
-		p = new Profesor();
+		p = new Profesor("pepe","Excel","1233414");
 		p.saludar();
 	
 		System.out.println(p.getClass());

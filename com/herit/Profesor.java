@@ -10,7 +10,7 @@ public class Profesor extends Persona {
 	}
 
 	public void saludar() {
-		System.out.println("Soy el profesor");
+		System.out.println("Soy el profesor" + " me llamo " + getNombre());
 	}
 	
 	public void darClase() {

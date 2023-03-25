@@ -1,20 +1,17 @@
-package com.mockExamn.model;
-
-import java.util.Objects;
+package mockExam.model;
 
 public class Vino {
+
 	private String nombre;
 	private double graduacion;
 	
+	public Vino() {
+	}
+
 	public Vino(String nombre, double graduacion) {
 		super();
 		this.nombre = nombre;
 		this.graduacion = graduacion;
-	}
-	
-	public Vino(String nombre ) {
-		super();
-		this.nombre = nombre;
 	}
 
 	public String getNombre() {
@@ -27,9 +24,8 @@ public class Vino {
 
 	@Override
 	public String toString() {
-		return  nombre + ", graduacion " + graduacion;
+		return "Vino: " + nombre + ", graduacion: " + graduacion;
 	}
-	
-	
+
 	
 }
