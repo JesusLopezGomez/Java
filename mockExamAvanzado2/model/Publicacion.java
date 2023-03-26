@@ -88,7 +88,7 @@ public class Publicacion implements Valorable,Comparable<Publicacion>{
 	
 	
 	public boolean isAnterior(Publicacion publicacion) {
-		return (this.fechaCreacion.compareTo(publicacion.getFechaCreacion()) > 0)? true : false;
+		return this.fechaCreacion.compareTo(publicacion.getFechaCreacion()) > 0;
 	}
 	
 
