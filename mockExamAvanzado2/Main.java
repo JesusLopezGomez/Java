@@ -12,12 +12,15 @@ public class Main {
 
 	public static void main(String[] args) throws MemoryStorageException, PublicacionesException {
 		System.out.println(Valoraciones.BUENA.getValoracion());
-		Publicacion p = new Publicacion("hola",new Usuario("lopeeh","gomez"));
+		Publicacion p = new Tweet("hola",new Usuario("lopeeh","gomez"));
+		p.valorar(Valoraciones.BUENA);
 		System.out.println(p);
 		Usuario u = new Usuario("Lopeeh","gomez");
 		MemoryStorage m = new MemoryStorage();
 		m.addUsuario("Lopeeh", "gomez");
-		m.addPublicaion("Locotrones", "Lopeeh");
+		m.addPublicaion("Locotrones asdadsadadasa", "Lopeeh");
+		System.out.println(m.mostrarTweets());
+		m.mostrarPosts();
 	}
 
 }

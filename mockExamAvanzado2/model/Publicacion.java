@@ -4,22 +4,23 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 import mockExamAvanzado2.enumerados.Valoraciones;
+import mockExamAvanzado2.exepciones.PublicacionesException;
 import mockExamAvanzado2.interfaces.Valorable;
 
-public class Publicacion implements Valorable,Comparable<Publicacion>{
+public abstract class Publicacion implements Valorable,Comparable<Publicacion>{
 
 	protected String texto;
 	private LocalDateTime fechaCreacion;
 	protected int valoracion;
-	private static int codigo = 0;
-	private int codigoSiguiente;
+	private int codigo;
+	private static int codigoSiguiente;
 	private Usuario usuario;
 	
-	public Publicacion(String texto, Usuario usuario) {
+	public Publicacion(String texto, Usuario usuario) throws PublicacionesException {
 		super();
-		this.texto = texto;
+		setTexto(texto);
 		this.usuario = usuario;
-		this.codigo ++;
+		this.codigoSiguiente ++;
 		this.fechaCreacion = LocalDateTime.now();
 	}
 	
@@ -27,9 +28,7 @@ public class Publicacion implements Valorable,Comparable<Publicacion>{
 		return this.getTexto();
 	}
 	
-	protected void setTexto(String texto) {
-		this.texto = texto;
-	}
+	protected abstract void setTexto(String texto) throws PublicacionesException;
 
 	@Override
 	public int hashCode() {

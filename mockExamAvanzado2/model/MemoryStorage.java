@@ -36,9 +36,6 @@ public class MemoryStorage {
 	}
 	
 	public void addPublicaion(String texto, String login) throws PublicacionesException {
-		if(texto.length() > 50) {
-			throw new PublicacionesException("Error has sobrepasado, el máximo de caracteres(50).");
-		}
 		if(this.numPublicacionesActuales == NUM_MAXIMO_PUBLICACIONES) {
 			if(posicionUsuario(login)!= -1) {
 				this.publicaciones[0] = new Tweet(texto,this.usuarios[posicionUsuario(login)]);
@@ -51,9 +48,6 @@ public class MemoryStorage {
 	}
 	
 	public void addPublicacion(String texto,String login,String tema) throws PublicacionesException {
-		if(texto.equals("")) {
-			throw new PublicacionesException("Error, no se puede dejar en blanco.");
-		}
 		if(this.numPublicacionesActuales == NUM_MAXIMO_PUBLICACIONES) {
 			if(posicionUsuario(login)!= -1) {
 				this.publicaciones[0] = new Post(texto,this.usuarios[posicionUsuario(login)],tema);
@@ -66,9 +60,6 @@ public class MemoryStorage {
 	}
 	
 	public void addPublicaion(String texto, String login,int estrellas) throws PublicacionesException {
-		if(texto.length() >= 200 && texto.length() <= 100 && estrellas >= 5 && estrellas <= 1) {
-			throw new PublicacionesException("Error, limite caracteres(100-200), estrellas(1-5)");
-		}
 		if(this.numPublicacionesActuales == NUM_MAXIMO_PUBLICACIONES) {
 			if(posicionUsuario(login)!= -1) {
 				this.publicaciones[0] = new Recomendacion(texto,this.usuarios[posicionUsuario(login)],estrellas);
