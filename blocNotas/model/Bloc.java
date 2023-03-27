@@ -1,6 +1,7 @@
 package blocNotas.model;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Bloc {
 
@@ -64,6 +65,31 @@ public class Bloc {
 	public String getNombre() {
 		return this.nombre;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean resultado = false;
+		if (this == obj)
+			resultado = true;
+		if (obj == null)
+			resultado = false;
+		if (getClass() != obj.getClass())
+			resultado = false;
+		Bloc other = (Bloc) obj;
+		return resultado && Objects.equals(nombre, other.nombre);
+	}
+	
+	public String ordenaBloc() {
+		Arrays.sort(this.notas);
+		return Arrays.toString(this.notas);
+	}
+	
+	
 
 	
 	
