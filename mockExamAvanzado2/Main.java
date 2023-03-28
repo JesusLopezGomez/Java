@@ -20,7 +20,8 @@ public class Main {
 		m.addUsuario("Lopeeh", "gomez");
 		m.addPublicaion("Locotrones asdadsadadasa", "Lopeeh");
 		System.out.println(m.mostrarTweets());
-		m.mostrarPosts();
+		System.out.println(m.mostrarPosts());
+		
 	}
 
 }
