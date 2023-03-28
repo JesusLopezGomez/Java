@@ -1,9 +1,11 @@
 package mockExamAvanzadoCorregidoEnClase;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 import mockExamAvanzadoCorregidoEnClase.publicacion.Post;
 import mockExamAvanzadoCorregidoEnClase.publicacion.Publicacion;
 import mockExamAvanzadoCorregidoEnClase.publicacion.PublicacionExcepcion;
-import mockExamAvanzadoCorregidoEnClase.publicacion.Recomendacion;
 import mockExamAvanzadoCorregidoEnClase.publicacion.Tweet;
 import mockExamAvanzadoCorregidoEnClase.usuario.Usuario;
 
@@ -24,6 +26,12 @@ public class Main {
 		} catch (PublicacionExcepcion e) {
 			e.printStackTrace();
 		}
+		
+		LocalDateTime fecha = LocalDateTime.now();
+		LocalDateTime fecha2 = LocalDateTime.of(2003, 11, 19, 12, 11);
+		
+		System.out.println(ChronoUnit.YEARS.between(fecha2, fecha));
+		System.out.println(fecha2.isBefore(fecha));
 		
 	}
 

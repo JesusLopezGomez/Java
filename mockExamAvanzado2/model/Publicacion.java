@@ -59,9 +59,16 @@ public abstract class Publicacion implements Valorable,Comparable<Publicacion>{
 	}
 
 	@Override
-	public boolean valorar(Valoraciones valoracion) {
-		this.valoracion = valoracion.getValoracion();
-		return true;
+	public boolean valorar(String valoracion) {
+		boolean resultado = false;
+		try {
+			Valoraciones v = Valoraciones.valueOf(valoracion.toUpperCase());
+			this.valoracion+=v.getValoracion();
+			resultado = true;
+		}catch(Exception e) {
+			
+		}
+		return resultado;
 	}
 	
 	public int getCodigo() {
@@ -74,10 +81,11 @@ public abstract class Publicacion implements Valorable,Comparable<Publicacion>{
 
 	@Override
 	public String toString() {
-		return String.format("Publicación: %s\r\n"
+		return String.format("%s"
+				+ "\nPublicación: %s\r\n"
 				+ "Realizada por: %s\r\n"
 				+ "Valoración: %s\r\n"
-				+ "Fecha de publicación: %s", this.texto,getLoginUsuario(),getValoracion(),getFechaCreacion());
+				+ "Fecha de publicación: %s", getClass().getSimpleName(),this.texto,getLoginUsuario(),getValoracion(),getFechaCreacion());
 	}
 
 	@Override

@@ -13,10 +13,16 @@ public class Post extends Publicacion {
 		this.tema = tema;
 	}
 	
-	public boolean valorar(Valoraciones valoracion) {
-		this.valoracion = valoracion.getValoracion()*2;
-		this.numeroLecturas ++;
-		return true;
+	public boolean valorar(String valoracion) {
+		boolean resultado = false;
+		try {
+			Valoraciones v = Valoraciones.valueOf(valoracion.toUpperCase());
+			this.valoracion+=v.getValoracion() * 2;
+			resultado = true;
+		}catch(Exception e) {
+			
+		}
+		return resultado;
 	}
 	
 	public int getNumeroLecturas(){
@@ -25,10 +31,15 @@ public class Post extends Publicacion {
 
 	@Override
 	protected void setTexto(String texto) throws PublicacionesException {
-		if(texto.isEmpty()) {
+		if(texto.isBlank()) {
 			throw new PublicacionesException("El texto no puede estar en blanco");
 		}
 		this.texto = texto;
+	}
+	
+	@Override
+	public String toString() {
+		return super.toString().concat("\nTema: " + this.tema);
 	}
 
 }

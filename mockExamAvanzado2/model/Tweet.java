@@ -9,17 +9,21 @@ public class Tweet extends Publicacion {
 		super(texto,usuario);
 	}
 	
-	public boolean valorar(Valoraciones valoracion) {
-		this.valoracion = valoracion.getValoracion()*2;
-		return true;
+	public boolean valorar(String valoracion) {
+		boolean resultado = false;
+		try {
+			Valoraciones v = Valoraciones.valueOf(valoracion.toUpperCase());
+			this.valoracion+=v.getValoracion() * 2;
+			resultado = true;
+		}catch(Exception e) {
+			
+		}
+		return resultado;
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("Publicación: %s\r\n"
-				+ "Realizada por: %s\r\n"
-				+ "Valoración: %s\r\n"
-				+ "Fecha de publicación: %s", this.texto,getLoginUsuario(),getValoracion(),getFechaCreacion());
+		return super.toString();
 	}
 
 	@Override
