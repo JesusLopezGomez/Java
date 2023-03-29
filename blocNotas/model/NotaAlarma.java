@@ -2,6 +2,7 @@ package blocNotas.model;
 
 import java.time.LocalDateTime;
 
+import blocNotas.excepciones.NotaAlarmaException;
 import blocNotas.interfaces.Activable;
 
 public class NotaAlarma extends Nota implements Activable {
@@ -11,10 +12,14 @@ public class NotaAlarma extends Nota implements Activable {
 	private int minutosRepetir;
 	private boolean activado;
 	
-	public NotaAlarma(String texto, LocalDateTime fechaAlarma, boolean activado) {
+	public NotaAlarma(String texto, LocalDateTime fechaAlarma, boolean activado) throws NotaAlarmaException {
 		super(texto);
-		this.fechaAlarma = fechaAlarma;
+		if(texto == null || fechaAlarma == null) {
+			throw new NotaAlarmaException("Error has introducido algún valor nulo");
+		}
+		setFechaAlarma(fechaAlarma);
 		this.activado = activado;
+		this.minutosRepetir = MINUTOS_REPETIR_POR_DEFECTO;
 	}
 	public NotaAlarma(String texto, LocalDateTime fechaAlarma, int minutosRepetir) {
 		super(texto);

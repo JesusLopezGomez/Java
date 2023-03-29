@@ -15,8 +15,7 @@ public class Nota implements Comparable<Nota> {
 	public Nota(String texto) {
 		this.texto = texto;
 		this.fechaCreacion = LocalDateTime.now();
-		this.codigoSiguiente ++;
-		this.codigo = this.codigoSiguiente;
+		this.codigo = this.codigoSiguiente ++;
 	}
 	
 	public String getTexto() {
@@ -49,11 +48,11 @@ public class Nota implements Comparable<Nota> {
 	}
 	
 	public boolean isCreadoAnterior(Nota nota) {
-		return this.fechaCreacion.compareTo(nota.getFechaCreacion()) > 0;	
+		return this.fechaCreacion.isBefore(nota.getFechaCreacion());	
 	}
 	
 	public boolean isModificadoAnterior(Nota nota) {
-		return this.fechaModificacion.compareTo(nota.getFechaModificacion()) > 0;	
+		return this.fechaModificacion.isBefore(nota.getFechaModificacion());	
 	}
 
 	@Override
