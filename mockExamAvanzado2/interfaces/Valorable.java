@@ -4,6 +4,6 @@ import mockExamAvanzado2.enumerados.Valoraciones;
 
 public interface Valorable {
 
-	public boolean valorar(Valoraciones valoracion);
+	public boolean valorar(String valoracion);
 	
 }

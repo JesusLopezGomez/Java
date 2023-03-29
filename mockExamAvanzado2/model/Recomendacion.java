@@ -8,13 +8,16 @@ public class Recomendacion extends Publicacion {
 	
 	public Recomendacion(String texto, Usuario usuario, int estrellas) throws PublicacionesException {
 		super(texto, usuario);
+		if(estrellas >= 5 || estrellas <= 1) {
+			throw new PublicacionesException("Error estrellas no válidas, tiene que ser entre 1 y 5");
+		}
 		this.numEstrellas = estrellas;
 	}
 
 	@Override
 	protected void setTexto(String texto) throws PublicacionesException {
-		if(texto.length() >= 200 && texto.length() <= 100 && this.numEstrellas >= 5 && this.numEstrellas <= 1) {
-			throw new PublicacionesException("Error, limite caracteres(100-200), estrellas(1-5)");
+		if(texto.length() >= 200 || texto.length() <= 100) {
+			throw new PublicacionesException("Error, limite caracteres(100-200)");
 		}
 		this.texto = texto;
 	}
@@ -24,11 +27,7 @@ public class Recomendacion extends Publicacion {
 	}
 	
 	public String toString() {
-		return String.format("Publicación: %s\r\n"
-				+ "Realizada por: %s\r\n"
-				+ "Valoración: %s\r\n"
-				+ "Fecha de publicación: %s\n"
-				+ "Número de estrellas: %s", this.texto,getLoginUsuario(),getValoracion(),getFechaCreacion(),getNumeroDeEstrellas());
+		return super.toString().concat("\nNúmero de estrellas: " + this.numEstrellas);
 	}
 	
 
