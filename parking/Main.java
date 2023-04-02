@@ -17,8 +17,8 @@ public class Main {
 
 		Parking p = new Parking();
 		System.out.println(p.entrarParking(v2));
-		System.out.println(p.entrarParking(v));
 		System.out.println(p.entrarParking(v1));
+		System.out.println(p.entrarParking(v));
 		System.out.println("Ordenar por fecha de entrada");
 		System.out.println(p.compararPorFechaEntrada());	
 		System.out.println("Ordenar por marca");
