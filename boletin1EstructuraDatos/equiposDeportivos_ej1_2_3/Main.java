@@ -1,4 +1,4 @@
-package boletin1EstructuraDatos;
+package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3;
 
 import java.util.Arrays;
 
@@ -48,6 +48,33 @@ public class Main {
 			sevilla.añadirAlumno(a1);
 			sevilla.añadirAlumno(a2);
 			System.out.println(sevilla.intersectEquipo(betis));
+			
+		} catch (AlumnoException e) {
+			e.printStackTrace();
+		}
+		
+		Equipo2 madrid = new Equipo2("Barca");
+		Equipo2 barca = new Equipo2("Madrid");
+		
+		try {
+			//Añadir alumnos
+			barca.añadirAlumno(1);
+			barca.añadirAlumno(2);
+			barca.añadirAlumno(3);
+			madrid.añadirAlumno(4);
+			madrid.añadirAlumno(5);
+			//Borrar alumnos
+			barca.delAlumno(3);
+			//Añadir alumnos dario al betis
+			madrid.añadirAlumno(3);
+			//Comprobar alumno
+			System.out.println(madrid.existeAlumno(3));
+			//Unir equipos
+			System.out.println(barca.unionEquipo(madrid));
+			//Intersect equipos
+			barca.añadirAlumno(7);
+			barca.añadirAlumno(8);
+			System.out.println(madrid.intersectEquipo(barca));
 			
 		} catch (AlumnoException e) {
 			e.printStackTrace();

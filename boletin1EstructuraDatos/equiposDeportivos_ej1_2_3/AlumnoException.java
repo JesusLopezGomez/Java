@@ -1,4 +1,4 @@
-package boletin1EstructuraDatos;
+package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3;
 
 public class AlumnoException extends Exception {
 
