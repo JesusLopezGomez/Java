@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Boletin1 {
 	public static double calcularAreaCirculo(double radio) {
-		return (radio*radio)*(3.1416);
+		return (radio*radio)*(Math.PI);
 	}
 	public static double calcularLongitudCirculo(double radio2) {
 		return 2*3.1416*radio2;

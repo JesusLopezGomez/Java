@@ -41,16 +41,6 @@ public class Parking{
 		
 	}
 
-	
-	private String arrayToString() {
-		StringBuilder sb = new StringBuilder();
-		for(Vehiculo v: this.vehiculos) {
-			if(v!=null) {
-				sb.append(v).append("\n");
-			}	
-		}
-		return sb.toString();
-	}
 
 	public String compararPorFechaEntrada() {
 		Vehiculo[] vehiculosSinNulos = quitarNulosArray();

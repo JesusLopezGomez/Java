@@ -13,6 +13,7 @@ public class Post extends Publicacion {
 		this.tema = tema;
 	}
 	
+	@Override
 	public boolean valorar(String valoracion) {
 		boolean resultado = false;
 		try {
@@ -22,6 +23,8 @@ public class Post extends Publicacion {
 		}catch(Exception e) {
 			
 		}
+			
+		
 		return resultado;
 	}
 	

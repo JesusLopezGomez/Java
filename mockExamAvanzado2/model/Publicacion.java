@@ -16,16 +16,16 @@ public abstract class Publicacion implements Valorable,Comparable<Publicacion>{
 	private static int codigoSiguiente;
 	private Usuario usuario;
 	
-	public Publicacion(String texto, Usuario usuario) throws PublicacionesException {
+	protected Publicacion(String texto, Usuario usuario) throws PublicacionesException {
 		super();
 		setTexto(texto);
 		this.usuario = usuario;
-		this.codigoSiguiente ++;
+		codigoSiguiente ++;
 		this.fechaCreacion = LocalDateTime.now();
 	}
 	
 	protected String getTexto() {
-		return this.getTexto();
+		return this.texto;
 	}
 	
 	protected abstract void setTexto(String texto) throws PublicacionesException;
@@ -45,7 +45,7 @@ public abstract class Publicacion implements Valorable,Comparable<Publicacion>{
 		if (getClass() != obj.getClass())
 			resultado = false;
 		Publicacion other = (Publicacion) obj;
-		return resultado && codigoSiguiente == other.codigoSiguiente && Objects.equals(fechaCreacion, other.fechaCreacion)
+		return resultado && codigoSiguiente == codigoSiguiente && Objects.equals(fechaCreacion, other.fechaCreacion)
 				&& Objects.equals(texto, other.texto) && Objects.equals(usuario, other.usuario)
 				&& valoracion == other.valoracion;
 	}

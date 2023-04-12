@@ -28,7 +28,7 @@ public class Tweet extends Publicacion {
 
 	@Override
 	protected void setTexto(String texto) throws PublicacionesException {
-		if(texto.length() >= 50 && texto != null) {
+		if(texto != null && texto.length() >= 50 ) {
 			throw new PublicacionesException("Mucho texto tiene que ser menor que 50");
 		}
 		this.texto = texto;
