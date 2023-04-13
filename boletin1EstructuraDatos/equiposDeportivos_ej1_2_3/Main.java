@@ -31,22 +31,22 @@ public class Main {
 		
 		try {
 			//Añadir alumnos
-			betis.añadirAlumno(a1);
-			betis.añadirAlumno(a2);
-			betis.añadirAlumno(a3);
-			sevilla.añadirAlumno(a4);
-			sevilla.añadirAlumno(a5);
+			betis.anniadirAlumno(a1);
+			betis.anniadirAlumno(a2);
+			betis.anniadirAlumno(a3);
+			sevilla.anniadirAlumno(a4);
+			sevilla.anniadirAlumno(a5);
 			//Borrar alumnos
 			sevilla.delAlumno(a4);
 			//Añadir alumnos dario al betis
-			betis.añadirAlumno(a4);
+			betis.anniadirAlumno(a4);
 			//Comprobar alumno
 			System.out.println(betis.existeAlumno(a4));
 			//Unir equipos
 			System.out.println(betis.unionEquipo(sevilla));
 			//Intersect equipos
-			sevilla.añadirAlumno(a1);
-			sevilla.añadirAlumno(a2);
+			sevilla.anniadirAlumno(a1);
+			sevilla.anniadirAlumno(a2);
 			System.out.println(sevilla.intersectEquipo(betis));
 			
 		} catch (AlumnoException e) {
@@ -58,22 +58,22 @@ public class Main {
 		
 		try {
 			//Añadir alumnos
-			barca.añadirAlumno(1);
-			barca.añadirAlumno(2);
-			barca.añadirAlumno(3);
-			madrid.añadirAlumno(4);
-			madrid.añadirAlumno(5);
+			barca.anniadirAlumno(1);
+			barca.anniadirAlumno(2);
+			barca.anniadirAlumno(3);
+			madrid.anniadirAlumno(4);
+			madrid.anniadirAlumno(5);
 			//Borrar alumnos
 			barca.delAlumno(3);
 			//Añadir alumnos dario al betis
-			madrid.añadirAlumno(3);
+			madrid.anniadirAlumno(3);
 			//Comprobar alumno
 			System.out.println(madrid.existeAlumno(3));
 			//Unir equipos
 			System.out.println(barca.unionEquipo(madrid));
 			//Intersect equipos
-			barca.añadirAlumno(7);
-			barca.añadirAlumno(8);
+			barca.anniadirAlumno(7);
+			barca.anniadirAlumno(8);
 			System.out.println(madrid.intersectEquipo(barca));
 			
 		} catch (AlumnoException e) {

@@ -25,7 +25,7 @@ public class Main {
 				System.out.println("Introduce el nombre de la página");
 				String nombre = sc.nextLine();
 				try {
-					historial.añadirPaginaConsultada(new PaginaWeb(nombre));
+					historial.anniadirPaginaConsultada(new PaginaWeb(nombre));
 					System.out.println("Pagina consultada añadida correctamente.");
 				}catch (ExceptionHistorial e) {
 					e.printStackTrace();

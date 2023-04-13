@@ -13,7 +13,7 @@ public class Historial {
 		listaWebs = new ArrayList<>();
 	}
 	
-	public void añadirPaginaConsultada(PaginaWeb p) throws ExceptionHistorial {
+	public void anniadirPaginaConsultada(PaginaWeb p) throws ExceptionHistorial {
 		if(this.listaWebs.isEmpty()) {
 			this.listaWebs.add(p);
 		}else if(this.listaWebs.get(this.listaWebs.size()-1).getFechaHora().isBefore(p.getFechaHora())){
@@ -31,7 +31,7 @@ public class Historial {
 		Historial historialDia = new Historial();
 		for(PaginaWeb p: this.listaWebs) {
 			if(p != null && p.getFechaHora().getDayOfMonth() == dia) {
-				historialDia.añadirPaginaConsultada(p);
+				historialDia.anniadirPaginaConsultada(p);
 			}
 		}
 		

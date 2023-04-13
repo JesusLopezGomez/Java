@@ -17,7 +17,7 @@ public class Equipo {
 		this.nombreGrupo = nombreGrupo;
 	}
 	
-	public void añadirAlumno(Alumno a) throws AlumnoException {
+	public void anniadirAlumno(Alumno a) throws AlumnoException {
 		if(a != null && existeAlumno(a) == null) {
 			this.conjuntoAlumnos.add(a);
 		}else {
