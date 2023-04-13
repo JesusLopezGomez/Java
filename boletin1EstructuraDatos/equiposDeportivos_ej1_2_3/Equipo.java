@@ -1,5 +1,6 @@
 package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -48,6 +49,7 @@ public class Equipo {
 		
 		return this;
 	}
+	
 	
 	public Equipo intersectEquipo(Equipo equipoExterno) {
 		Set<Alumno> equipoNuevo = new HashSet<>();		
