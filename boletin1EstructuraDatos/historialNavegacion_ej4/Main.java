@@ -61,9 +61,9 @@ public class Main {
 		PaginaWeb p2 = new PaginaWeb("brave",LocalDateTime.of(2003, 11, 18, 8, 32, 10));
 		
 		Historial h = new Historial();
-		h.añadirPaginaConsultada(p2);
-		h.añadirPaginaConsultada(p);
-		h.añadirPaginaConsultada(p1);
+		h.anniadirPaginaConsultada(p2);
+		h.anniadirPaginaConsultada(p);
+		h.anniadirPaginaConsultada(p1);
 		
 		System.out.println(h.consultarHistorialDia(19));
 

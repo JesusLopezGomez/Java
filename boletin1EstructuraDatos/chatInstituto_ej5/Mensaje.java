@@ -49,7 +49,7 @@ public class Mensaje implements Comparable<Mensaje>{
 
 	@Override
 	public int compareTo(Mensaje o) {
-		return this.texto.compareTo(o.texto);
+		return this.remitente.nombre.compareTo(o.remitente.nombre);
 	}
 	
 	

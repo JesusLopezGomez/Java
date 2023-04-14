@@ -17,7 +17,7 @@ public abstract class Persona {
 	}
 	
 	
-	public abstract void enviarMensaje(Persona destinatario,String mensaje);
+	public abstract void enviarMensaje(Persona destinatario,String mensaje) throws ExceptionsPersona;
 	
 	public abstract String leerMensajesBuzon() throws ExceptionsPersona;
 

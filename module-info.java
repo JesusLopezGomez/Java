@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author root
- *
- */
-module miPrimerProyecto {
-}
