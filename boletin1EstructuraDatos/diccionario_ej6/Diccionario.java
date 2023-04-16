@@ -1,8 +1,11 @@
 package boletin1EstructuraDatos.diccionario_ej6;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 public class Diccionario {
@@ -15,15 +18,9 @@ public class Diccionario {
 	}
 	
 	public void anniadirPalabraSignificado(String palabra, String significado) {
-		boolean encontrada = false;
-		if(!this.diccionario.isEmpty()) {
-			for(String k: this.diccionario.keySet()) {
-				if(k.equals(palabra)) {
-					this.diccionario.get(palabra).add(significado);
-					encontrada = true;
-				}
-			}
-		}if(!encontrada){
+		if(this.diccionario.containsKey(palabra)) {
+			this.diccionario.get(palabra).add(significado);
+		}else {
 			this.diccionario.put(palabra, new HashSet<String>());
 			this.diccionario.get(palabra).add(significado);
 		}
@@ -31,17 +28,24 @@ public class Diccionario {
 	}
 	
 	public String buscarPalabra(String palabra) {
-		String resultado = "-1";
-		
-		if(this.diccionario.containsKey(palabra)) {
-			resultado = this.diccionario.get(palabra).toString();
-		}
-		
-		return resultado;
+		return palabra!=null && this.diccionario.containsKey(palabra)?this.diccionario.get(palabra).toString():null;
 	}
 	
 	public void borrarPalabra(String palabra) {
 		this.diccionario.remove(palabra);
 	}
+	
+	public String listarPalabras(String comienzo) {
+        StringBuilder sb = new StringBuilder();
+
+        for (String key : this.diccionario.keySet()) {
+            if(key.toLowerCase().startsWith(comienzo.toLowerCase())) {
+                sb.append(key + "\n");
+            }
+        }
+        return sb.toString();
+    }
+
+	
 
 }
