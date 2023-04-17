@@ -3,6 +3,10 @@ package boletin1EstructuraDatos.historialNavegacion_ej4;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
+import boletin1EstructuraDatos.historialNavegacion_ej4.model.ExceptionHistorial;
+import boletin1EstructuraDatos.historialNavegacion_ej4.model.Historial;
+import boletin1EstructuraDatos.historialNavegacion_ej4.model.PaginaWeb;
+
 public class Main {
 
 	public static void main(String[] args) throws ExceptionHistorial {

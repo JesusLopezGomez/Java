@@ -11,12 +11,12 @@ import java.util.Map;
 public class Diccionario {
 
 	private Map<String,Collection<String>> diccionario;
-	
+
 	public Diccionario() {
 		super();
 		this.diccionario = new HashMap<>();
 	}
-	
+
 	public void anniadirPalabraSignificado(String palabra, String significado) {
 		if(this.diccionario.containsKey(palabra)) {
 			this.diccionario.get(palabra).add(significado);
@@ -38,8 +38,8 @@ public class Diccionario {
 	public String listarPalabras(String comienzo) {
         StringBuilder sb = new StringBuilder();
 
-        for (String key : this.diccionario.keySet()) {
-            if(key.toLowerCase().startsWith(comienzo.toLowerCase())) {
+        for(String key : this.diccionario.keySet()) {
+            if((key).toString().startsWith(comienzo.toLowerCase())) {
                 sb.append(key + "\n");
             }
         }

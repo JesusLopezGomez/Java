@@ -1,47 +1,46 @@
-package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3;
+package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class Equipo {
+public class Equipo2<T> {
 
 	private String nombreGrupo;
-	private Set<Alumno> conjuntoAlumnos = new HashSet<>();
+	private Set<T> conjuntoAlumnos = new HashSet<>();
 
-	public Equipo(String nombreGrupo) {
+	public Equipo2(String nombreGrupo) {
 		super();
 		this.nombreGrupo = nombreGrupo;
 	}
 	
-	public void anniadirAlumno(Alumno a) throws AlumnoException {
-		if(a != null && existeAlumno(a) == null) {
-			this.conjuntoAlumnos.add(a);
+	public void anniadirAlumno(T t) throws AlumnoException {
+		if(t != null && existeAlumno(t) == null) {
+			this.conjuntoAlumnos.add(t);
 		}else {
 			throw new AlumnoException("Error alumno existente");
 		}
 	}
 
-	public void delAlumno(Alumno a) throws AlumnoException {
-		if(existeAlumno(a) != null) {
-			this.conjuntoAlumnos.remove(a);
+	public void delAlumno(T t) throws AlumnoException {
+		if(existeAlumno(t) != null) {
+			this.conjuntoAlumnos.remove(t);
 		}else {
 			throw new AlumnoException("Error alumno no existente");
 		}
 	}
 	
-	public Alumno existeAlumno(Alumno a) {
-		Alumno alumno = null;
-		if(a != null && this.conjuntoAlumnos.contains(a)) {
-			alumno = a;
+	public T existeAlumno(T t) {
+		T tipo = null;
+		if(t != null && this.conjuntoAlumnos.contains(t)) {
+			tipo = t;
 		}
-		return alumno;
+		return tipo;
 	}
 	
-	public Equipo unionEquipo(Equipo equipoExterno) {
+	public Equipo2 unionEquipo(Equipo2 equipoExterno) {
 		
 		if(equipoExterno != null && !this.conjuntoAlumnos.equals(equipoExterno.conjuntoAlumnos)) {
 			boolean equipoUnido = this.conjuntoAlumnos.addAll(equipoExterno.conjuntoAlumnos);
@@ -50,13 +49,12 @@ public class Equipo {
 		return this;
 	}
 	
-	
-	public Equipo intersectEquipo(Equipo equipoExterno) {
-		Set<Alumno> equipoNuevo = new HashSet<>();		
-		Iterator<Alumno> it = this.conjuntoAlumnos.iterator();
+	public Equipo2 intersectEquipo(Equipo2 equipoExterno) {
+		Set<T> equipoNuevo = new HashSet<>();		
+		Iterator<T> it = this.conjuntoAlumnos.iterator();
 
-		Alumno nuevoAlumno;
-		Equipo equipoFinal;
+		T nuevoAlumno;
+		Equipo2 equipoFinal;
 		
 		while(it.hasNext()) {
 			nuevoAlumno = it.next();
@@ -65,7 +63,7 @@ public class Equipo {
 			}
 		}
 		if(equipoNuevo.size() > 1) {
-			equipoFinal = new Equipo(this.nombreGrupo);
+			equipoFinal = new Equipo2(this.nombreGrupo);
 			equipoFinal.conjuntoAlumnos = equipoNuevo;
 		}
 		return this;
@@ -75,6 +73,5 @@ public class Equipo {
 	public String toString() {
 		return "Nombre de equipo: " + this.nombreGrupo + ", participantes:  " + this.conjuntoAlumnos.toString();
 	}
-	
 	
 }

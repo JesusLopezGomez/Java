@@ -2,6 +2,11 @@ package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3;
 
 import java.util.Arrays;
 
+import boletin1EstructuraDatos.equiposDeportivos_ej1_2_3.model.Alumno;
+import boletin1EstructuraDatos.equiposDeportivos_ej1_2_3.model.AlumnoException;
+import boletin1EstructuraDatos.equiposDeportivos_ej1_2_3.model.Equipo;
+import boletin1EstructuraDatos.equiposDeportivos_ej1_2_3.model.Equipo2;
+
 public class Main {
 
 	public static <T> T[] reverse (T[] arrayOriginal) {

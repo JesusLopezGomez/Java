@@ -1,4 +1,4 @@
-package boletin1EstructuraDatos.chatInstituto_ej5;
+package boletin1EstructuraDatos.chatInstituto_ej5.model;
 
 public class ExceptionsPersona extends Exception {
 

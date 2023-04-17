@@ -1,6 +1,14 @@
-package boletin1EstructuraDatos.chatInstituto_ej5;
+package boletin1EstructuraDatos.chatInstituto_ej5.testAlumno;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Alumno;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.ExceptionsPersona;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Mensaje;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Persona;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Profesor;
 
 class TestAlumno {
 
@@ -12,37 +20,23 @@ class TestAlumno {
 	
 	@Test
 	void testEnviarMensajeOK() {
-		try {
-			a.enviarMensaje(p, "No entiendo el ejercicio 99");
-		} catch (ExceptionsPersona e) {
-		}
-	}
+		assertThrows(ExceptionsPersona.class, ()-> {a.enviarMensaje(p, "No entiendo el ejercicio 99");},"Hay un error");
+	} 
 	
 	@Test
 	void testEnviarMensajeKO() {
-		try {
-			a.enviarMensaje(a2, "como vas");
-		} catch (ExceptionsPersona e) {
-		}
+		assertThrows(ExceptionsPersona.class, () -> {a.enviarMensaje(a2, "como vas");},"Hay un error");
 	}
 
 	@Test
 	void testLeerMensajesBuzonOK() {
-		
-		try {
-			a.recibirMensaje(m);
-			a.leerMensajesBuzon();
-		} catch (ExceptionsPersona e) {
-		}
+		a.recibirMensaje(m);
+		assertThrows(ExceptionsPersona.class, () -> {a.leerMensajesBuzon();},"Hay un error" );
 	}
 	
 	@Test
 	void testLeerMensajesBuzonKO() {
-		
-		try {
-			a.leerMensajesBuzon();
-		} catch (ExceptionsPersona e) {
-		}
+		assertThrows(ExceptionsPersona.class, () -> {a.leerMensajesBuzon();},"Hay un error" );
 	}
 
 	@Test

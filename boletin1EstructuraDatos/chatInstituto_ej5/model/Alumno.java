@@ -1,19 +1,23 @@
-package boletin1EstructuraDatos.chatInstituto_ej5;
+package boletin1EstructuraDatos.chatInstituto_ej5.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class Profesor extends Persona {
+public class Alumno extends Persona {
 
-	public Profesor(String nombre, int edad) {
+	public Alumno(String nombre, int edad) {
 		super(nombre, edad);
 	}
 
 	@Override
-	public void enviarMensaje(Persona destinatario, String mensaje) {
+	public void enviarMensaje(Persona destinatario, String mensaje) throws ExceptionsPersona {
+		if(this.edad < 18 && destinatario instanceof Alumno) {
+			throw new ExceptionsPersona("Error, alumno menor de edad, solo puede enviar mensaje a profesores.");
+		}
 		destinatario.listaMensajes.add(new Mensaje(this,mensaje));
+
 	}
 
 	@Override
@@ -59,11 +63,6 @@ public class Profesor extends Persona {
 	@Override
 	public void recibirMensaje(Mensaje mensaje) {
 		this.listaMensajes.add(mensaje);
-	}
-	
-	@Override
-	public String toString() {
-		return String.format("Profesor %s, edad %s ", this.nombre,this.edad);
 	}
 
 }

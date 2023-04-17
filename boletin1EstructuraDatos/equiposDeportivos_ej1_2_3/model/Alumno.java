@@ -1,4 +1,4 @@
-package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3;
+package boletin1EstructuraDatos.equiposDeportivos_ej1_2_3.model;
 
 import java.util.Objects;
 

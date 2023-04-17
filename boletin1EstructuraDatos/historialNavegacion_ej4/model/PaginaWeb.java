@@ -1,4 +1,4 @@
-package boletin1EstructuraDatos.historialNavegacion_ej4;
+package boletin1EstructuraDatos.historialNavegacion_ej4.model;
 
 import java.time.LocalDateTime;
 

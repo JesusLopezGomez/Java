@@ -1,5 +1,11 @@
 package boletin1EstructuraDatos.chatInstituto_ej5;
 
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Alumno;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.ExceptionsPersona;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Mensaje;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Persona;
+import boletin1EstructuraDatos.chatInstituto_ej5.model.Profesor;
+
 public class Main {
 
 	public static void main(String[] args) {

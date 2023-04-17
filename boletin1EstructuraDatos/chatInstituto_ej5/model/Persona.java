@@ -1,13 +1,13 @@
-package boletin1EstructuraDatos.chatInstituto_ej5;
+package boletin1EstructuraDatos.chatInstituto_ej5.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Persona {
 
-	String nombre;
-	int edad;
-	List<Mensaje> listaMensajes;;
+	protected String nombre;
+	protected int edad;
+	protected List<Mensaje> listaMensajes;;
 	
 	protected Persona(String nombre, int edad) {
 		super();
