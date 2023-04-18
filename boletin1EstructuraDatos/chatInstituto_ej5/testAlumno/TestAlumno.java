@@ -1,6 +1,6 @@
 package boletin1EstructuraDatos.chatInstituto_ej5.testAlumno;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
@@ -13,14 +13,20 @@ import boletin1EstructuraDatos.chatInstituto_ej5.model.Profesor;
 class TestAlumno {
 
 	
-	Persona p = new Profesor("Jose manuel",45);
-	Persona a = new Alumno("Manuel" , 17);
-	Persona a2 = new Alumno("Jose", 19);
+	Profesor p = new Profesor("Jose manuel",45);
+	Alumno a = new Alumno("Manuel" , 17);
+	Alumno a2 = new Alumno("Jose", 19);
 	Mensaje m = new Mensaje(a, "Tengo una duda");
 	
 	@Test
 	void testEnviarMensajeOK() {
-		assertThrows(ExceptionsPersona.class, ()-> {a.enviarMensaje(p, "No entiendo el ejercicio 99");},"Hay un error");
+		try {
+			a.enviarMensaje(p, "No entiendo el ejercicio 99");
+		}catch(ExceptionsPersona e) {
+			assert(false);
+		}
+		
+
 	} 
 	
 	@Test

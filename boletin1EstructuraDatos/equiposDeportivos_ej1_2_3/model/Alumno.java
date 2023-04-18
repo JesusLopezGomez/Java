@@ -21,7 +21,7 @@ public class Alumno {
 			resultado = true;
 		if (obj == null)
 			resultado = false;
-		if (getClass() != obj.getClass())
+		if (this.getClass() != obj.getClass())
 			resultado = false;
 		Alumno other = (Alumno) obj;
 		return resultado && Objects.equals(dni, other.dni);
