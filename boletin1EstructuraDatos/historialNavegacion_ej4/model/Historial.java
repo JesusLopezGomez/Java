@@ -23,19 +23,25 @@ public class Historial {
 		}
 	}
 	
-	public Historial consultarHistorialCompleto() {
-		return this;
+	public String consultarHistorialCompleto() {
+		StringBuilder sb = new StringBuilder();
+		
+		for(PaginaWeb p :this.listaWebs) {
+			sb.append(p).append(System.lineSeparator());
+		}
+		
+		return sb.toString();
 	}
 	
-	public Historial consultarHistorialDia(int dia) throws ExceptionHistorial {
-		Historial historialDia = new Historial();
+	public String consultarHistorialDia(int dia) throws ExceptionHistorial {
+		StringBuilder sb = new StringBuilder();
 		for(PaginaWeb p: this.listaWebs) {
 			if(p != null && p.getFechaHora().getDayOfMonth() == dia) {
-				historialDia.anniadirPaginaConsultada(p);
+				sb.append(p).append(System.lineSeparator());
 			}
 		}
 		
-		return historialDia;
+		return sb.toString();
 	}
 	
 	public void borrarHistorial() {

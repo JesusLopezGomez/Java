@@ -70,7 +70,7 @@ public class Main {
 			}
 
 		}
-		System.out.println("Saliendo del sistema de cajas...:(");
+		System.out.println("Saliendo del sistema de cajas...");
 		
 		
 	}
