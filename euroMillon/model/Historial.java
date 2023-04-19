@@ -54,25 +54,11 @@ public class Historial {
 	}
 	
 	public boolean actualizarSorteo(LocalDate fechaSorteo,Combinacion combinacion){
-		boolean actualizado = false;
-		for(LocalDate l : this.sorteos.keySet()) {
-			if(!l.equals(fechaSorteo)) {
-				this.sorteos.replace(l, this.sorteos.get(l), combinacion);
-				actualizado = true;
-			}
-		}
-		return actualizado;
+		return this.sorteos.replace(fechaSorteo, this.sorteos.get(fechaSorteo), combinacion);
 	}
 	
 	public boolean borrarSorteo(LocalDate fechaSorteo) {
-		boolean borrado = false;
-		if(this.sorteos.containsKey(fechaSorteo)) {
-			this.sorteos.remove(fechaSorteo);
-			borrado = true;
-		}else {
-			borrado = false;
-		}
-		return borrado;
+		return this.sorteos.remove(fechaSorteo) != null;
 	}
 	
 	public List<String> listarSorteosDesdeFecha(LocalDate fechaSorteo){
@@ -101,27 +87,26 @@ public class Historial {
 		Map<String, Integer> aciertos = new HashMap<>();
 		int contNum = 0;
 		int contEstrellas = 0;
-		for(LocalDate l : this.sorteos.keySet()) {
-			if(l.equals(fechaSorteo)) {
-				for(Integer n : this.sorteos.get(l).getNumeros()) {
-					for(Integer n2 : combinacion.getNumeros())
-						if(n.equals(n2)) {
-							contNum++;
-						}
-				}
-				for(Integer n : this.sorteos.get(l).getEstrellas()) {
-					for(Integer n2 : combinacion.getEstrellas()) {
-						if(n.equals(n2)) {
-							contEstrellas++;
-						}
+		if(this.sorteos.containsKey(fechaSorteo)) {
+			for(Integer n : this.sorteos.get(fechaSorteo).getNumeros()) {
+				for(Integer n2 : combinacion.getNumeros())
+					if(n.equals(n2)) {
+						contNum++;
+					}
+			}
+			for(Integer n : this.sorteos.get(fechaSorteo).getEstrellas()) {
+				for(Integer n2 : combinacion.getEstrellas()) {
+					if(n.equals(n2)) {
+						contEstrellas++;
 					}
 				}
-				
 			}
-		
+				
 		}
+		
+		
 		if(this.sorteos.keySet().contains(fechaSorteo)) {
-			aciertos.put(String.format("El sorteo dia %s, mes %s, año %s. Ha sido premiado con ", fechaSorteo.getDayOfMonth(),fechaSorteo.getMonth(),fechaSorteo.getYear()), contNum + contEstrellas);
+			aciertos.put(String.format("El sorteo dia %s, mes %s, año %s. Ha sido premiado con ", fechaSorteo.getDayOfMonth(),fechaSorteo.getMonth().toString().toLowerCase(),fechaSorteo.getYear()), contNum + contEstrellas);
 		}
 		return aciertos;
 	}

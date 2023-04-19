@@ -1,5 +1,8 @@
 package euroMillon.model;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
@@ -17,54 +20,40 @@ public class Combinacion {
 	private Set<Integer> conjuntoEstrellas;
 	
 	public Combinacion(int numero1, int numero2, int numero3, int numero4, int numero5, int estrella1, int estrella2) throws CombinacionException {
-		super();
-		this.conjuntoEstrellas = new TreeSet<>();
-		this.conjuntoNumeros = new TreeSet<>();
-		this.conjuntoEstrellas.add(estrella1);
-		this.conjuntoEstrellas.add(estrella2);
-		this.conjuntoNumeros.add(numero1);
-		this.conjuntoNumeros.add(numero2);
-		this.conjuntoNumeros.add(numero3);
-		this.conjuntoNumeros.add(numero4);
-		this.conjuntoNumeros.add(numero5);
-		//Comprobacion de fuera de rango numero
-		for(Integer n : conjuntoNumeros) {
-			if(n > VALOR_MAXIMO_NUMEROS || n < VALOR_MINIMO) {
-				throw new CombinacionException("Error has introducido numero fuera de rango(1-50).");
-			}
-		}
-		//Comprobacion de fuera de rango estrellas
-		for(Integer n : conjuntoEstrellas) {
-			if(n > VALOR_MAIXIMO_ESTRELLAS || n < VALOR_MINIMO) {
-				throw new CombinacionException("Error has introducido estrella fuera de rango(1-12).");
-			}
-		}
-		
-		//Comprobacion de no iguales numeros con estrellas
-		for(Integer n :  this.conjuntoEstrellas) {
-			if(this.conjuntoNumeros.contains(n)) {
-				throw new CombinacionException("Error no se pueden repetir números que ya entre estrellas y numeros.");
-			}
-		}
-		
-		//Comprobacion de estrellas repetidas
-		if(this.conjuntoEstrellas.size() != TOTAL_ESTRELLAS) {
-			throw new CombinacionException("Error has introducido estrellas repetidas.");
-		//Comprobacion de numeros repetidas
-		}if(this.conjuntoNumeros.size() != TOTAL_NUMEROS) {
-			throw new CombinacionException("Error has introducido numeros repetidos.");
-		}
-		
+		this(toArrayEnteros(numero1,numero2,numero3,numero4,numero5), toArrayEnteros(estrella1, estrella2));		
 	}
 	
-	public Combinacion(Set<Integer> conjuntoNumeros, Set<Integer> conjuntoEstrellas) throws CombinacionException {
+	public Combinacion(int[] numeros, int[] estrellas) throws CombinacionException {
 		super();
-		this.conjuntoNumeros = conjuntoNumeros;
-		this.conjuntoEstrellas = conjuntoEstrellas;
+		this.conjuntoNumeros = new TreeSet<>();
+		this.conjuntoEstrellas = new TreeSet<>();
+		
+		//Añadir numeros al conjunto de numeros
+		for(int n : numeros) {
+			this.conjuntoNumeros.add(n);
+		}
+		//Añadir estrellas al conjunto de estrellas
+		for(int e : estrellas) {
+			this.conjuntoEstrellas.add(e);
+		}
+		
 		if(this.conjuntoEstrellas.size() != TOTAL_ESTRELLAS) {
 			throw new CombinacionException("Error has introducido estrellas repetidas.");
-		}if(this.conjuntoNumeros.size() != TOTAL_NUMEROS) {
+		}
+		if(this.conjuntoNumeros.size() != TOTAL_NUMEROS) {
 			throw new CombinacionException("Error has introducido numeros repetidos.");
+		}
+		//Comprobar que no salgan estrellas fuera de rango
+		for(int e : this.conjuntoEstrellas) {
+			if(e < VALOR_MINIMO || e > VALOR_MAIXIMO_ESTRELLAS) {
+				throw new CombinacionException("Error has introducido estrellas fuera de rango(1-12).");
+			}
+		}
+		//Comprobar que no salgan numeros fuera de rango
+		for(int n : this.conjuntoNumeros) {
+			if(n < VALOR_MINIMO || n > VALOR_MAXIMO_NUMEROS) {
+				throw new CombinacionException("Error has introducido numeros fuera de rango(1-50).");
+			}
 		}
 	}
 	
@@ -74,6 +63,10 @@ public class Combinacion {
 	
 	public Set<Integer> getEstrellas() {
 		return this.conjuntoEstrellas;
+	}
+	
+	public static int[] toArrayEnteros(int...enteros) {
+		return enteros;
 	}
 
 	@Override

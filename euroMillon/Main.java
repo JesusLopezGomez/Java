@@ -10,11 +10,14 @@ import euroMillon.model.HistorialException;
 public class Main {
 
 	public static void main(String[] args) {
+		int[] numeros = {1,2,3,4,5};
+		int[] estrellas = {7,8};
 		
 		Historial h = new Historial();
 		Combinacion c = null;
 		try {
-			c = new Combinacion(1,2,3,4,5,7,8);
+			c = new Combinacion(numeros,estrellas);
+			System.out.println(c);
 		} catch (CombinacionException e) {
 			e.printStackTrace();
 		}
@@ -25,7 +28,7 @@ public class Main {
 			e.printStackTrace();
 		}
 		try {
-			System.out.println(h.comprobarAciertos(LocalDate.of(2003, 11, 19), new Combinacion(2,8,13,22,5,7,12)));
+			System.out.println(h.comprobarAciertos(LocalDate.of(2003, 11, 19), new Combinacion(1,2,3,4,5,7,8)));
 		} catch (CombinacionException e) {
 			e.printStackTrace();
 		}
