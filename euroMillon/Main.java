@@ -24,9 +24,10 @@ public class Main {
 		
 		try {
 			h.addSorteo(LocalDate.of(2003, 11, 19), c);
-		} catch (CombinacionException e) {
+		} catch (HistorialException e) {
 			e.printStackTrace();
 		}
+
 		try {
 			System.out.println(h.comprobarAciertos(LocalDate.of(2003, 11, 19), new Combinacion(1,2,3,4,5,7,8)));
 		} catch (CombinacionException e) {

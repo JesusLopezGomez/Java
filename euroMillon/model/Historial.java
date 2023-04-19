@@ -16,41 +16,34 @@ public class Historial {
 		this.sorteos = new HashMap<>();
 	}
 	
-	public boolean addSorteo(LocalDate fechaSorteo, Combinacion combinacion) throws CombinacionException {
+	public boolean addSorteo(LocalDate fechaSorteo, Combinacion combinacion) throws HistorialException {
 		boolean resultado = false;
 		
 		if(!this.sorteos.containsKey(fechaSorteo)) {
 			this.sorteos.put(fechaSorteo, combinacion);
 			resultado = true;
 		}else {
-			throw new CombinacionException("Error ese sorteo ya está añadido al historial.");
+			throw new HistorialException("Error ese sorteo ya está añadido al historial.");
 		}
 		
 		return resultado;
 	}
 	
-	public boolean addSorteo(int dia, int mes, int annio, Combinacion combinacion) throws CombinacionException {
+	public boolean addSorteo(int dia, int mes, int annio, Combinacion combinacion) throws HistorialException {
 		boolean resultado = false;
 		
 		if(!this.sorteos.containsKey(LocalDate.of(annio, mes, dia))) {
 			this.sorteos.put(LocalDate.of(annio, mes, dia), combinacion);
 			resultado = true;
 		}else {
-			throw new CombinacionException("Error ese sorteo ya está añadido al historial.");
+			throw new HistorialException("Error ese sorteo ya está añadido al historial.");
 		}
 		
 		return resultado;
 	}
 	
 	public boolean actualizarSorteo(int dia, int mes, int annio, Combinacion combinacion) {
-		boolean actualizado = false;
-		for(LocalDate l : this.sorteos.keySet()) {
-			if(!l.equals(LocalDate.of(annio, mes, dia))) {
-				this.sorteos.replace(l, this.sorteos.get(l), combinacion);
-				actualizado = true;
-			}
-		}
-		return actualizado;
+		return this.sorteos.replace(LocalDate.of(annio, mes, dia), this.sorteos.get(LocalDate.of(annio, mes, dia)), combinacion);
 	}
 	
 	public boolean actualizarSorteo(LocalDate fechaSorteo,Combinacion combinacion){
