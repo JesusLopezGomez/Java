@@ -76,30 +76,10 @@ public class Historial {
 		return listaHistorico;
 	}
 	
-	public Map<String, Integer> comprobarAciertos(LocalDate fechaSorteo, Combinacion combinacion){
-		Map<String, Integer> aciertos = new HashMap<>();
-		int contNum = 0;
-		int contEstrellas = 0;
-		if(this.sorteos.containsKey(fechaSorteo)) {
-			for(Integer n : this.sorteos.get(fechaSorteo).getNumeros()) {
-				for(Integer n2 : combinacion.getNumeros())
-					if(n.equals(n2)) {
-						contNum++;
-					}
-			}
-			for(Integer n : this.sorteos.get(fechaSorteo).getEstrellas()) {
-				for(Integer n2 : combinacion.getEstrellas()) {
-					if(n.equals(n2)) {
-						contEstrellas++;
-					}
-				}
-			}
-				
-		}
-		
-		
+	public Map<String, Integer> comprobarAciertos(LocalDate fechaSorteo, Combinacion combinacion) throws CombinacionException{
+		Map<String, Integer> aciertos = new HashMap<>();		
 		if(this.sorteos.keySet().contains(fechaSorteo)) {
-			aciertos.put(String.format("El sorteo dia %s, mes %s, año %s. Ha sido premiado con ", fechaSorteo.getDayOfMonth(),fechaSorteo.getMonth().toString().toLowerCase(),fechaSorteo.getYear()), contNum + contEstrellas);
+			aciertos.put(String.format("El sorteo dia %s, mes %s, año %s. Ha sido premiado con ", fechaSorteo.getDayOfMonth(),fechaSorteo.getMonth().toString().toLowerCase(),fechaSorteo.getYear()), combinacion.comprobarCobinacion(this.sorteos.get(fechaSorteo)));
 		}
 		return aciertos;
 	}

@@ -1,8 +1,5 @@
 package euroMillon.model;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
@@ -57,12 +54,37 @@ public class Combinacion {
 		}
 	}
 	
-	public Set<Integer> getNumeros() {
+	public Set<Integer> getNumeros(){
 		return this.conjuntoNumeros;
 	}
 	
-	public Set<Integer> getEstrellas() {
+	public Set<Integer> getEstrellas(){
 		return this.conjuntoEstrellas;
+	}
+	
+	public int comprobarCobinacion(Combinacion c) throws CombinacionException {
+		int contNum = 0;
+		int contEstrellas = 0;
+		if(c != null) {
+			for(Integer n : this.conjuntoEstrellas) {
+				for(Integer n2 : c.conjuntoEstrellas) {
+					if(n.equals(n2)) {
+						contEstrellas ++;
+					}
+				}
+			}
+			for(Integer n : this.conjuntoNumeros) {
+				for(Integer n2 : c.conjuntoNumeros) {
+					if(n.equals(n2)) {
+						contNum ++;
+					}
+				}
+			}
+		}else {
+			throw new CombinacionException("Error, no puedes meter una combinacion nula");
+		}
+
+		return contNum + contEstrellas;
 	}
 	
 	public static int[] toArrayEnteros(int...enteros) {
@@ -77,7 +99,7 @@ public class Combinacion {
 	@Override
 	public boolean equals(Object obj) {
 		boolean resultado = false;
-		if (this == obj) {
+		if (this instanceof obj) {
 			Combinacion other = (Combinacion) obj;
 			resultado = this.hashCode() == other.hashCode();
 		}
