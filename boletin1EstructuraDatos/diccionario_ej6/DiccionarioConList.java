@@ -1,16 +1,19 @@
 package boletin1EstructuraDatos.diccionario_ej6;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class DiccionarioConList {
 
-	List<Entrada> diccionario;
+	Set<Entrada> diccionario;
 	
 	public DiccionarioConList() {
 		super();
-		this.diccionario = new ArrayList<>();
+		this.diccionario = new HashSet<>();
 	}
 	
 	public void anniadirPalabraSignificado(String palabra, String significado) {
@@ -26,7 +29,6 @@ public class DiccionarioConList {
 				this.diccionario.add(new Entrada(palabra,significado));
 			}
 		}
-
 	}
 	
 	public String buscarPalabra(String palabra) {
@@ -43,24 +45,28 @@ public class DiccionarioConList {
 	
 	public void borrarPalabra(String palabra) {
 		if(palabra != null && !palabra.isEmpty()) {
-			for(Entrada e : this.diccionario) {
+			Iterator<Entrada> it = this.diccionario.iterator();
+			Entrada e = null;
+			while(it.hasNext()) {
+				e = it.next();
 				if(e.getPalabra().equals(palabra)) {
-					this.diccionario.remove(e);
+					it.remove();
 				}
 			}
 		}
 	}
 	
-	public String listarPalabras(String comienzo) {
-		StringBuilder sb = new StringBuilder();
+	public List<String> listarPalabras(String comienzo) {
+		List<String> palabras = new ArrayList<>();
 		if(comienzo != null && !comienzo.isEmpty()) {
 	        for(Entrada e : this.diccionario) {
 	            if(e.getPalabra().startsWith(comienzo)) {
-	                sb.append(e + "\n");
+	               palabras.add(e.getPalabra());
 	            }
 	        }
 		}
-        return sb.toString();
+		Collections.sort(palabras);
+        return palabras;
     }
 
 }

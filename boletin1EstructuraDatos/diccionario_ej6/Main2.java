@@ -12,10 +12,11 @@ public class Main2 {
 		dl.anniadirPalabraSignificado("Hola", "Saludos");
 		
 		dl.anniadirPalabraSignificado("Holita", "Saluditas");
-		
+		dl.anniadirPalabraSignificado("Halita", "Saluditas");
+
 		dl.borrarPalabra("Hola");
 				
-		System.out.println(dl.listarPalabras("Hol"));
+		System.out.println(dl.listarPalabras("H"));
 
 		
 	}

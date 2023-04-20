@@ -98,13 +98,10 @@ public class Combinacion {
 
 	@Override
 	public boolean equals(Object obj) {
-		boolean resultado = false;
-		if (this instanceof obj) {
-			Combinacion other = (Combinacion) obj;
-			resultado = this.hashCode() == other.hashCode();
-		}
 
-		return resultado;
+		return this==obj || obj!=null &&
+	            obj instanceof Combinacion
+	            && this.hashCode()==((Combinacion)obj).hashCode();
 	}
 
 	@Override

@@ -2,6 +2,9 @@ package boletin1EstructuraDatos.diccionario_ej6;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import euroMillon.model.Combinacion;
 
 public class Entrada {
 	
@@ -25,6 +28,20 @@ public class Entrada {
 	
 	public void anniadirSignificado(String significado){
 		this.significados.add(significado);
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(palabra);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return this==obj || obj!=null &&
+	            obj instanceof Entrada
+	            && this.hashCode()==((Entrada)obj).hashCode();
 	}
 
 	@Override
