@@ -39,7 +39,7 @@ public class Diccionario {
         StringBuilder sb = new StringBuilder();
 
         for(String key : this.diccionario.keySet()) {
-            if((key).toString().startsWith(comienzo.toLowerCase())) {
+            if((key).toLowerCase().startsWith(comienzo.toLowerCase())) {
                 sb.append(key + "\n");
             }
         }
