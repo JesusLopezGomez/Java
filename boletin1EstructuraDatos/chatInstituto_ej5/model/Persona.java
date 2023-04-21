@@ -7,7 +7,7 @@ public abstract class Persona {
 
 	protected String nombre;
 	protected int edad;
-	protected List<Mensaje> listaMensajes;;
+	protected List<Mensaje> listaMensajes;
 	
 	protected Persona(String nombre, int edad) {
 		super();
