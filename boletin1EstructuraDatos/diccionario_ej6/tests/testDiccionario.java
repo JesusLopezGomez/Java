@@ -31,6 +31,12 @@ class testDiccionario {
 		}
 	}
 	
+	@Test
+	void testBorrarPalabra() {
+		d.anniadirPalabraSignificado("Casa", "Un techo");
+		d.borrarPalabra("Casa");
+	}
+	
 	
 	@Test
 	void testListarPalabras() {

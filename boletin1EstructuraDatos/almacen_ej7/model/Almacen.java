@@ -10,6 +10,9 @@ public class Almacen {
 	public Almacen() {
 		super();
 		this.listaCajas = new ArrayList<>();
+		for(int i = 0; i < 21; i++) {
+			this.listaCajas.add(new Caja());
+		}
 	}
 	
 	public void abrirCaja(int numeroCaja) throws AlmacenExceptions {
@@ -59,9 +62,6 @@ public class Almacen {
 			
 	}
 	
-	public void anniadirCaja(Caja caja) {
-		this.listaCajas.add(caja);
-	}
 	
 	
 

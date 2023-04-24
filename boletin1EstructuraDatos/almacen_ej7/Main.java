@@ -18,21 +18,6 @@ public class Main {
 		
 		Almacen a = new Almacen();
 		
-		Caja caja0 = new Caja(); 
-		Caja caja2 = new Caja(); 
-		Caja caja3 = new Caja(); 
-		Caja caja4 = new Caja(); 
-		Caja caja5 = new Caja(); 
-		Caja caja6 = new Caja(); 
-		Caja caja7 = new Caja(); 
-		a.anniadirCaja(caja0);
-		a.anniadirCaja(caja2);
-		a.anniadirCaja(caja3);
-		a.anniadirCaja(caja4);
-		a.anniadirCaja(caja5);
-		a.anniadirCaja(caja6);
-		a.anniadirCaja(caja7);
-		
 		while(opcion != 5) {
 			System.out.println(MENU);
 			System.out.println("Introduce una opción: ");

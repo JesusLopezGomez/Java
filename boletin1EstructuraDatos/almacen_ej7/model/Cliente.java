@@ -18,5 +18,9 @@ public class Cliente {
 	public void setAsignarCaja(int numero) {
 		this.numeroDeCajaAsignada = numero;
 	}
+	
+	public int getCajaAsignada() {
+		return this.numeroDeCajaAsignada;
+	}
 
 }

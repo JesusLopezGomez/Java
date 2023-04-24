@@ -41,13 +41,15 @@ public class Caja {
 	}
 	
 	public String atenderCliente() throws AlmacenExceptions {
-		String resultado = "";
+		String resultado = null;
 		if(!getEstado() || this.listaClientes.isEmpty()) {
 			throw new AlmacenExceptions("Error no hay clientes en la caja o la caja está cerrada.");
+		}else {
+			resultado = String.format("Se ha atentido al cliente con número %s", this.listaClientes.get(0).getCodigo());
+			
+			this.listaClientes.remove(this.listaClientes.get(0));
 		}
-		resultado = String.format("Se ha atentido al cliente con número %s", this.listaClientes.get(0).getCodigo());
-		
-		this.listaClientes.remove(this.listaClientes.get(0));
+
 		return resultado;
 	}
 	

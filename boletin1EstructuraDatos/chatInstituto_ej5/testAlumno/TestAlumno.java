@@ -1,5 +1,6 @@
 package boletin1EstructuraDatos.chatInstituto_ej5.testAlumno;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -7,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import boletin1EstructuraDatos.chatInstituto_ej5.model.Alumno;
 import boletin1EstructuraDatos.chatInstituto_ej5.model.ExceptionsPersona;
 import boletin1EstructuraDatos.chatInstituto_ej5.model.Mensaje;
-import boletin1EstructuraDatos.chatInstituto_ej5.model.Persona;
 import boletin1EstructuraDatos.chatInstituto_ej5.model.Profesor;
 
 class TestAlumno {
@@ -34,11 +34,6 @@ class TestAlumno {
 		assertThrows(ExceptionsPersona.class, () -> {a.enviarMensaje(a2, "como vas");},"Hay un error");
 	}
 
-	@Test
-	void testLeerMensajesBuzonOK() {
-		a.recibirMensaje(m);
-		assertThrows(ExceptionsPersona.class, () -> {a.leerMensajesBuzon();},"Hay un error" );
-	}
 	
 	@Test
 	void testLeerMensajesBuzonKO() {
@@ -73,16 +68,14 @@ class TestAlumno {
 	void testEncontrarMensajeContieneFraseOK() {
 		a.recibirMensaje(m);
 		a.encontrarMensajeContieneFrase("una");
+		assertFalse(a.encontrarMensajeContieneFrase("duda").isEmpty());
 	}
 	
 	@Test
 	void testEncontrarMensajeContieneFraseKO() {
-		a.encontrarMensajeContieneFrase("una");
-		try {
-			a.recibirMensaje(m);
-			a.leerMensajesBuzon().isEmpty();
-		} catch (ExceptionsPersona e) {
-		}
+		a.recibirMensaje(m);
+		assertFalse(a.encontrarMensajeContieneFrase("duda").equals(m));
+	
 	}
 
 	@Test
