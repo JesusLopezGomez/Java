@@ -1,5 +1,6 @@
 package euromillon2.model;
 
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,15 +40,14 @@ public class Combinacion {
 			}
 		}
 		
-		if(this.conjuntoEstrellas.size() < TOTAL_ESTRELLAS) {
+		if(this.conjuntoEstrellas.size() != TOTAL_ESTRELLAS) {
 			throw new CombinacionException("Error, has introducido estrella repetidas.");
 		}
-		if(this.conjuntoNumeros.size() < TOTAL_NUMEROS) {
+		if(this.conjuntoNumeros.size() != TOTAL_NUMEROS) {
 			throw new CombinacionException("Error has introducido numeros repetidos.");
 		}
 		
 	}
-	
 	
 	public Combinacion(int numero1, int numero2, int numero3, int numero4, int numero5, int estrella1, int estrella2) throws CombinacionException {
 		this(toArray(numero1,numero2,numero3,numero4,numero5), toArray(estrella1,estrella2));
@@ -63,37 +63,19 @@ public class Combinacion {
 	}
 
 	public int comprobarCombinacion(Combinacion c) {
-		int contNumeros = 0;
-		int contEstrellas = 0;
+		int resultado = -1;
 		if(c != null) {
-			//Recorro ambos conjuntos en busca de coincidencias
-			for(int numero : this.conjuntoNumeros) {
-				for(int numero2 : c.conjuntoNumeros) {
-					if(numero == numero2) {
-						contNumeros ++;
-					}
-				}
-			}
-			//Recorro ambos conjuntos en busca de coincidencias
-			for(int estrella : this.conjuntoEstrellas) {
-				for(int estrella2 : c.conjuntoEstrellas) {
-					if(estrella == estrella2) {
-						contEstrellas ++;
-					}
-				}
-			}
-			
+			c.conjuntoEstrellas.retainAll(this.conjuntoEstrellas);
+			c.conjuntoNumeros.retainAll(this.conjuntoNumeros);
+			resultado = c.conjuntoEstrellas.size()+c.conjuntoNumeros.size();
 		}
-		return contNumeros+contEstrellas;
+		return resultado;
 	}
-	
-	
 	
 	@Override
 	public int hashCode() {
 		return Objects.hash(conjuntoEstrellas, conjuntoNumeros);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -102,13 +84,10 @@ public class Combinacion {
 				this.hashCode() == ((Combinacion)obj).hashCode();
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		return String.format("Numeros: %s, estrellas: %s", this.conjuntoNumeros,this.conjuntoEstrellas);
 	}
-
 
 	private static int[] toArray(int...numeros) {
 		return numeros;
