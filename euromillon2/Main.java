@@ -12,7 +12,6 @@ import euromillon2.model.HistorialException;
 public class Main {
 
 	public static void main(String[] args) {
-		Combinacion c = null;
 		Historial h = new Historial();
 		
 		try {
@@ -27,18 +26,13 @@ public class Main {
 			
 			System.out.println(h.mostrarHistorico());
 			
-			System.out.println(h.comprobarAciertos((LocalDate.of(2003, 11, 19)), new Combinacion(1,2,3,4,5,9,8)));
+			System.out.println(h.comprobarAciertos((LocalDate.of(2003, 11, 19)), new Combinacion(1,2,3,4,5,6,8)));
 		} catch (HistorialException e) {
 			e.printStackTrace();
 		} catch (CombinacionException e) {
 			e.printStackTrace();
 		}
-		Map<String,Integer> mapaPrueba = new HashMap<>();
-		
-		System.out.println(mapaPrueba.put("Locura", 9));
-		System.out.println(mapaPrueba.put("Locura", 19));
 
-		
 	}
 
 }

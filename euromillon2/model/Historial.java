@@ -2,6 +2,7 @@ package euromillon2.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,13 +50,12 @@ public class Historial {
 	public List<String> listarSorteosDesdeFecha(LocalDate fecha){
 		List<String> listaSorteos = new ArrayList<>();
 		if(fecha != null) {
-			
 			for(LocalDate c : this.sorteos.keySet()) {
 				if(c.isAfter(fecha)) {
-					listaSorteos.add(this.sorteos.get(c).toString());
+					listaSorteos.add(c.toString() +" "+this.sorteos.get(c).toString());
 				}
 			}
-			
+			Collections.sort(listaSorteos);
 		}
 		return listaSorteos;
 	}
@@ -72,7 +72,7 @@ public class Historial {
 	
 	public Map<String, Integer> comprobarAciertos(LocalDate fecha, Combinacion combinacion) throws HistorialException{
 		
-		if(fecha == null || combinacion == null || !this.sorteos.containsKey(fecha)) {
+		if(combinacion == null || !this.sorteos.containsKey(fecha)) {
 			throw new HistorialException("Error, no hay sorteos en esa fecha, o la combinacion y la fecha no son correctas.");
 		}
 		Map<String, Integer> aciertos = new HashMap<>();

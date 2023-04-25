@@ -7,11 +7,11 @@ import java.util.TreeSet;
 
 public class Combinacion {
 
-	private static final int VALOR_MINIMO = 1;
-	private static final int VALOR_MAXIMO_NUMEROS = 50;
-	private static final int VALOR_MAXIMO_ESTRELLAS = 12;
-	private static final int TOTAL_NUMEROS = 5;
-	private static final int TOTAL_ESTRELLAS = 2;
+	protected static final int VALOR_MINIMO = 1;
+	protected static final int VALOR_MAXIMO_NUMEROS = 50;
+	protected static final int VALOR_MAXIMO_ESTRELLAS = 12;
+	protected static final int TOTAL_NUMEROS = 5;
+	protected static final int TOTAL_ESTRELLAS = 2;
 	
 	private Set<Integer> conjuntoNumeros; 
 	private Set<Integer> conjuntoEstrellas; 
@@ -41,7 +41,7 @@ public class Combinacion {
 		}
 		
 		if(this.conjuntoEstrellas.size() != TOTAL_ESTRELLAS) {
-			throw new CombinacionException("Error, has introducido estrella repetidas.");
+			throw new CombinacionException("Error, has introducido estrellas repetidas.");
 		}
 		if(this.conjuntoNumeros.size() != TOTAL_NUMEROS) {
 			throw new CombinacionException("Error has introducido numeros repetidos.");
@@ -64,10 +64,15 @@ public class Combinacion {
 
 	public int comprobarCombinacion(Combinacion c) {
 		int resultado = -1;
+		
+		Set<Integer> nTemp = new HashSet<>(this.conjuntoNumeros);
+		Set<Integer> sTemp = new HashSet<>(this.conjuntoEstrellas);
+
 		if(c != null) {
-			c.conjuntoEstrellas.retainAll(this.conjuntoEstrellas);
-			c.conjuntoNumeros.retainAll(this.conjuntoNumeros);
-			resultado = c.conjuntoEstrellas.size()+c.conjuntoNumeros.size();
+			
+			nTemp.retainAll(c.conjuntoNumeros);
+			sTemp.retainAll(c.conjuntoEstrellas);
+			resultado = sTemp.size()+nTemp.size();
 		}
 		return resultado;
 	}
@@ -93,4 +98,6 @@ public class Combinacion {
 		return numeros;
 	}
 
+	
+	
 }

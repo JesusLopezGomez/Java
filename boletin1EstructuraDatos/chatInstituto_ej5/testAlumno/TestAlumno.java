@@ -82,5 +82,7 @@ class TestAlumno {
 	void testRecibirMensaje() {
 		a.recibirMensaje(m);
 	}
+	
+	
 
 }
