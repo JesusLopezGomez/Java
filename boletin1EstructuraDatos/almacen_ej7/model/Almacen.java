@@ -41,8 +41,6 @@ public class Almacen {
 				cajaMenor = c1;
 			}
 		}
-		c.setAsignarCaja(cajaMenor.getNumeroCaja());
-		cajaMenor.asignarCliente(c);
 		return String.format("Es usted el cliente número %s, y de debe ir a la"
 							+ "	caja número %s", c.getCodigo(),cajaMenor.getNumeroCaja());
 	}

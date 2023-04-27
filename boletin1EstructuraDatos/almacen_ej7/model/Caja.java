@@ -25,7 +25,10 @@ public class Caja {
 		return this.numeroCaja;
 	}
 	
-	public void asignarCliente(Cliente c) {
+	public void asignarCliente(Cliente c) throws AlmacenExceptions {
+		if(c == null || !this.estado) {
+			throw new AlmacenExceptions("Error la caja esta cerrada o la caja es nulo");
+		}
 		this.listaClientes.add(c);
 	}
 	
@@ -47,7 +50,7 @@ public class Caja {
 		}else {
 			resultado = String.format("Se ha atentido al cliente con número %s", this.listaClientes.get(0).getCodigo());
 			
-			this.listaClientes.remove(this.listaClientes.get(0));
+			this.listaClientes.remove(0);
 		}
 
 		return resultado;

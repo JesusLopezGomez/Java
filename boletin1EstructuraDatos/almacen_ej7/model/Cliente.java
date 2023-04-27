@@ -4,7 +4,6 @@ public class Cliente {
 
 	private static int codigo = 1;
 	private int codigoCliente;
-	private int numeroDeCajaAsignada;
 	
 	public Cliente() {
 		super();
@@ -15,12 +14,7 @@ public class Cliente {
 		return this.codigoCliente;
 	}
 	
-	public void setAsignarCaja(int numero) {
-		this.numeroDeCajaAsignada = numero;
-	}
 	
-	public int getCajaAsignada() {
-		return this.numeroDeCajaAsignada;
-	}
+
 
 }
