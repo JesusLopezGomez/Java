@@ -43,7 +43,6 @@ class testCaja {
 
 	@Test
 	void testAsignarCliente() {
-		caja1.asignarCliente(new Cliente());
 	
 		assertTrue(caja1.getClientesEnCaja()==1);
 	}
@@ -111,9 +110,7 @@ class testCaja {
 		} catch (AlmacenExceptions e1) {
 			assert(false);
 		}
-		
-		caja1.asignarCliente(new Cliente());
-		
+				
 		try {
 			assertTrue(caja1.atenderCliente() != null);
 		} catch (AlmacenExceptions e) {
@@ -153,7 +150,6 @@ class testCaja {
 	
 	@Test
 	void testCerrarCajaConClientes() {
-		caja1.asignarCliente(new Cliente());
 		try {
 			caja1.cerrarCaja();
 		} catch (AlmacenExceptions e) {

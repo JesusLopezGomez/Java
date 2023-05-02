@@ -1,7 +1,9 @@
 package euromillon2.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +28,14 @@ public class Historial {
 	
 	public boolean addSorteo(int annio, int mes, int dia, Combinacion combinacion) throws HistorialException {
 		return addSorteo(LocalDate.of(annio, mes, dia), combinacion);
+	}
+	
+	public void addSorteo(String linea) throws CombinacionException {
+		String[] datos = linea.split(",");
+		LocalDate fecha = LocalDate.parse(datos[0],DateTimeFormatter.ofPattern("d/MM/yyyy"));
+		String[] numeros = Arrays.copyOfRange(datos,1,6);
+		String[] estrellas = Arrays.copyOfRange(datos,7,9);
+		sorteos.put(fecha, new Combinacion(numeros,estrellas));
 	}
 	
 	public boolean actualizarSorteo(LocalDate fecha, Combinacion combinacion) throws HistorialException {

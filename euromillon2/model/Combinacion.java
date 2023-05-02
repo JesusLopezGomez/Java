@@ -24,7 +24,7 @@ public class Combinacion {
 		
 		//Añadir numeros
 		for(int i : numeros) {
-			if(i >= VALOR_MINIMO && i < VALOR_MAXIMO_NUMEROS) {
+			if(i >= VALOR_MINIMO && i <= VALOR_MAXIMO_NUMEROS) {
 				this.conjuntoNumeros.add(i);
 			}else {
 				throw new CombinacionException("Error has introducido un numero fuera del rango(1-50).");
@@ -33,7 +33,7 @@ public class Combinacion {
 		
 		//Añadir estrellas
 		for(int i : estrellas) {
-			if(i >= VALOR_MINIMO && i < VALOR_MAXIMO_ESTRELLAS) {
+			if(i >= VALOR_MINIMO && i <= VALOR_MAXIMO_ESTRELLAS) {
 				this.conjuntoEstrellas.add(i);
 			}else {
 				throw new CombinacionException("Error has introducido una estrella fuera del rango(1-12).");
@@ -51,6 +51,10 @@ public class Combinacion {
 	
 	public Combinacion(int numero1, int numero2, int numero3, int numero4, int numero5, int estrella1, int estrella2) throws CombinacionException {
 		this(toArray(numero1,numero2,numero3,numero4,numero5), toArray(estrella1,estrella2));
+	}
+	
+	public Combinacion(String[] numeros, String[] estrellas) throws CombinacionException {
+		this(stringToIntArray(numeros), stringToIntArray(estrellas));
 	}
 	
 	public Set<Integer> getConjuntoNumeros() {
@@ -95,6 +99,15 @@ public class Combinacion {
 	}
 
 	private static int[] toArray(int...numeros) {
+		return numeros;
+	}
+	
+	private static int[] stringToIntArray(String[] datos) {
+		int[] numeros = new int[datos.length];
+		for(int i = 0; i < numeros.length; i++) {
+			numeros[i] = Integer.valueOf(datos[i]);
+		}
+		
 		return numeros;
 	}
 
