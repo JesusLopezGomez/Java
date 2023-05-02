@@ -1,8 +1,12 @@
 package euromillon2;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 import euromillon2.model.Combinacion;
 import euromillon2.model.CombinacionException;
@@ -13,7 +17,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		Historial h = new Historial();
-		
+		/*
 		try {
 			System.out.println(h.addSorteo(LocalDate.of(2003, 11, 19), new Combinacion(19,11,03,4,6,8,5)));
 			System.out.println(h.addSorteo(2003, 11, 21, new Combinacion(11,12,13,10,8,9,6)));
@@ -32,7 +36,28 @@ public class Main {
 		} catch (CombinacionException e) {
 			e.printStackTrace();
 		}
-
+		*/
+		File f = new File("/home/estudiante/Downloads/Euromillones - 2004 a 2022.csv");
+		
+		
+		try {
+			BufferedReader buffer = new BufferedReader(new FileReader(f));
+			String linea = buffer.readLine();
+			linea = buffer.readLine();
+			while(linea != null) {
+				try {
+					h.addSorteo(linea);
+				} catch (CombinacionException e) {
+					e.printStackTrace();
+				}
+				linea = buffer.readLine();
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(h.mostrarHistorico());
+		
 	}
 
 }
