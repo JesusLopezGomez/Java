@@ -1,4 +1,4 @@
-package ejerciciosBuenosColecciones.model;
+package ejerciciosBuenosColecciones.chatInstituto1.model;
 
 public class PersonaExceptions extends Exception {
 

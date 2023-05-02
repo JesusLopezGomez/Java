@@ -1,11 +1,11 @@
-package ejerciciosBuenosColecciones;
+package ejerciciosBuenosColecciones.chatInstituto1;
 
 import java.time.LocalDate;
 
-import ejerciciosBuenosColecciones.model.Alumno;
-import ejerciciosBuenosColecciones.model.Persona;
-import ejerciciosBuenosColecciones.model.PersonaExceptions;
-import ejerciciosBuenosColecciones.model.Profesor;
+import ejerciciosBuenosColecciones.chatInstituto1.model.Alumno;
+import ejerciciosBuenosColecciones.chatInstituto1.model.Persona;
+import ejerciciosBuenosColecciones.chatInstituto1.model.PersonaExceptions;
+import ejerciciosBuenosColecciones.chatInstituto1.model.Profesor;
 
 public class Main {
 

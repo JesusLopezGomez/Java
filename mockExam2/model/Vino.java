@@ -6,7 +6,7 @@ public class Vino {
 	
 	private String nombre;
 	private double graduacion;
-	
+	private int[] numeros = new int[200];
 	public Vino(String descripcion) {
 		super();
 		this.nombre=descripcion;
