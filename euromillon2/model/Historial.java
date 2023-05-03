@@ -1,13 +1,19 @@
 package euromillon2.model;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Historial {
 
@@ -91,5 +97,148 @@ public class Historial {
 
 		return aciertos;
 	}
+	
+	public Set<Integer> numeroMasRepetido() {
+		Map<Integer, Integer> numerosRepetidos = numeroRepetidos();
+		Set<Integer> conjuntoNumeros = new HashSet<>();
+		conjuntoNumeros.add(1);
+		for(Integer i : numerosRepetidos.keySet()) {
+			for(Integer e : conjuntoNumeros) {
+				if(numerosRepetidos.get(i) > numerosRepetidos.get(e)) {
+					conjuntoNumeros.clear();
+					conjuntoNumeros.add(i);
+				}
+			}
+		}
+		
+		return conjuntoNumeros;
+	}
+	
+	public Set<Integer> numeroMenosRepetido() {
+		Map<Integer, Integer> numerosRepetidos = numeroRepetidos();
+		Set<Integer> conjuntoNumeros = new HashSet<>();
+		conjuntoNumeros.add(1);
+		for(Integer i : numerosRepetidos.keySet()) {
+			for(Integer e : conjuntoNumeros) {
+				if(numerosRepetidos.get(i) < numerosRepetidos.get(e)) {
+					conjuntoNumeros.clear();
+					conjuntoNumeros.add(i);
+				}
+			}
+		}
+		
+		return conjuntoNumeros;
+	}
+
+	private Map<Integer, Integer> numeroRepetidos() {
+		Map<Integer, Integer> numerosRepetidos = new HashMap<>();
+		
+		for(LocalDate l : this.sorteos.keySet()) {
+			for(Integer i : this.sorteos.get(l).getConjuntoNumeros()) {
+				if(!numerosRepetidos.containsKey(i)) {
+					numerosRepetidos.put(i, 0);
+				}
+				numerosRepetidos.replace(i, numerosRepetidos.get(i),numerosRepetidos.get(i)+1);
+			}
+		}
+		return numerosRepetidos;
+	}
+	
+	private Map<Integer, Integer> estrellasRepetidas() {
+		Map<Integer, Integer> estrellasRepetidas = new HashMap<>();
+		
+		for(LocalDate l : this.sorteos.keySet()) {
+			for(Integer i : this.sorteos.get(l).getConjuntoEstrellas()) {
+				if(!estrellasRepetidas.containsKey(i)) {
+					estrellasRepetidas.put(i, 0);
+				}
+				estrellasRepetidas.replace(i, estrellasRepetidas.get(i),estrellasRepetidas.get(i)+1);
+			}
+		}
+		return estrellasRepetidas;
+	}
+	
+	
+	public Set<Integer> estrellaMasRepetido() {
+		Map<Integer, Integer> numerosRepetidos = estrellasRepetidas();
+		Set<Integer> conjuntoEstrellas = new HashSet<>();
+		conjuntoEstrellas.add(1);
+		for(Integer i : numerosRepetidos.keySet()) {
+			for(Integer e : conjuntoEstrellas) {
+				if(numerosRepetidos.get(i) > numerosRepetidos.get(e)) {
+					conjuntoEstrellas.clear();
+					conjuntoEstrellas.add(i);
+				}
+			}
+		}
+		
+		return conjuntoEstrellas;
+	}
+	
+	public Set<Integer> estrellaMenosRepetido() {
+		Map<Integer, Integer> numerosRepetidos = estrellasRepetidas();
+		Set<Integer> conjuntoEstrellas = new HashSet<>();
+		conjuntoEstrellas.add(1);
+		for(Integer i : numerosRepetidos.keySet()) {
+			for(Integer e : conjuntoEstrellas) {
+				if(numerosRepetidos.get(i) < numerosRepetidos.get(e)) {
+					conjuntoEstrellas.clear();
+					conjuntoEstrellas.add(i);
+				}
+			}
+		}
+		
+		return conjuntoEstrellas;
+	}
+	
+	public Combinacion mayorSecuenciaNumerosConsecutivos() {
+		List<Combinacion> sorteosSecuencias = new ArrayList(this.sorteos.values());
+		Combinacion maxima = sorteosSecuencias.get(0);
+		
+		for(Combinacion c : this.sorteos.values()) {
+			if(obtenerSecuencia(c) > obtenerSecuencia(maxima)) {
+				maxima = c;
+			}
+		}
+		return maxima;
+	}
+	
+	private int obtenerSecuencia(Combinacion c) {
+		int secuencia = 0;
+		int tmp = -1;
+		for(int n : c.getConjuntoNumeros()) {
+			if(n == tmp+1) {
+				secuencia ++;
+			}
+			tmp = n;
+			
+		}
+		return secuencia;
+		
+	}
+	
+	public void cargarCombinaciones(String ruta){
+		File f = new File(ruta);
+		
+		
+		try {
+			BufferedReader buffer = new BufferedReader(new FileReader(f));
+			String linea = buffer.readLine();
+			linea = buffer.readLine();
+			while(linea != null) {
+				try {
+					addSorteo(linea);
+				} catch (CombinacionException e) {
+					e.printStackTrace();
+				}
+				linea = buffer.readLine();
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+
 
 }

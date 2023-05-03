@@ -4,19 +4,16 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
 import euromillon2.model.Combinacion;
 import euromillon2.model.CombinacionException;
 import euromillon2.model.Historial;
-import euromillon2.model.HistorialException;
 
 public class Main {
 
 	public static void main(String[] args) {
 		Historial h = new Historial();
+		
 		/*
 		try {
 			System.out.println(h.addSorteo(LocalDate.of(2003, 11, 19), new Combinacion(19,11,03,4,6,8,5)));
@@ -36,8 +33,8 @@ public class Main {
 		} catch (CombinacionException e) {
 			e.printStackTrace();
 		}
-		*/
-		File f = new File("/home/estudiante/Downloads/Euromillones - 2004 a 2022.csv");
+		
+		File f = new File("/home/estudiante/Downloads/Euromillones 2004 a 2023.csv");
 		
 		
 		try {
@@ -56,7 +53,15 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		*/
+
+		h.cargarCombinaciones("/home/estudiante/Downloads/Euromillones 2004 a 2023.csv");
 		System.out.println(h.mostrarHistorico());
+		System.out.println(h.numeroMasRepetido());
+		System.out.println(h.numeroMenosRepetido());
+		System.out.println(h.estrellaMenosRepetido());
+		System.out.println(h.estrellaMasRepetido());
+		System.out.println(h.mayorSecuenciaNumerosConsecutivos());
 		
 	}
 
