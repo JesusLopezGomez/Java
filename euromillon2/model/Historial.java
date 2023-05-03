@@ -220,7 +220,6 @@ public class Historial {
 	public void cargarCombinaciones(String ruta){
 		File f = new File(ruta);
 		
-		
 		try {
 			BufferedReader buffer = new BufferedReader(new FileReader(f));
 			String linea = buffer.readLine();
@@ -237,6 +236,15 @@ public class Historial {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public int maxAciertosCombinacion(Combinacion c) {
+		int maximo = 0;
+		for(LocalDate l : this.sorteos.keySet()) {
+			maximo = this.sorteos.get(l).comprobarCombinacion(c) > maximo ? this.sorteos.get(l).comprobarCombinacion(c):maximo ;
+
+		}
+		return maximo;
 	}
 
 

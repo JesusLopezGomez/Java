@@ -55,12 +55,18 @@ public class Main {
 		}
 		*/
 
-		h.cargarCombinaciones("/home/estudiante/Downloads/Euromillones 2004 a 2023.csv");
+		//h.cargarCombinaciones("/home/estudiante/Downloads/Euromillones 2004 a 2023.csv");
+		h.cargarCombinaciones("D:\\Donwloads\\Euromillones 2004 a 2023.csv");
 		System.out.println(h.mostrarHistorico());
 		System.out.println(h.numeroMasRepetido());
 		System.out.println(h.numeroMenosRepetido());
 		System.out.println(h.estrellaMenosRepetido());
 		System.out.println(h.estrellaMasRepetido());
+		try {
+			System.out.println(h.maxAciertosCombinacion(new Combinacion(1,13,23,45,12,3,8)));
+		} catch (CombinacionException e) {
+			e.printStackTrace();
+		}
 		System.out.println(h.mayorSecuenciaNumerosConsecutivos());
 		
 	}
