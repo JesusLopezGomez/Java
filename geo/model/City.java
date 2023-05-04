@@ -2,12 +2,11 @@ package geo.model;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class City {
 
@@ -23,8 +22,8 @@ public class City {
 		addAddress();
 	}
 	
-	public void addAddress() throws IOException {
-		File f = new File("/home/estudiante/Downloads/address.txt");
+	private void addAddress() throws IOException {
+		File f = new File("\\D:\\Donwloads\\address.txt");
 		
 		BufferedReader buffer = new BufferedReader(new FileReader(f));
 			
@@ -44,7 +43,7 @@ public class City {
 				
 			}
 			linea = buffer.readLine();
-
+ 
 			
 		}
 		buffer.close();
@@ -57,9 +56,22 @@ public class City {
 	public String getName() {
 		return this.city;
 	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(city, cityId);
+	}
+
+	@Override
+    public boolean equals(Object obj) {
+        return this==obj || obj!=null &&
+                obj instanceof City
+                && this.hashCode()==((City)obj).hashCode();
+    }
+	
 	@Override
 	public String toString() {
-		return String.format("City id: %s, city: %s, list address: %s ", this.cityId,this.city,this.listAddress);
+		return String.format("	City id: %s, city: %s, address:%s ", this.cityId,this.city,this.listAddress.size());
 	}
 
 }

@@ -28,7 +28,7 @@ public class Historial {
 		if(sorteos.containsKey(fecha)) {
 			throw new HistorialException("Error, sorteo ya existente.");
 		}
-		
+		 
 		return sorteos.put(fecha, combinacion) == null;
 	}
 	
@@ -84,7 +84,7 @@ public class Historial {
 		}
 		
 		return listaHistorico;
-	}
+	} 
 	
 	public Map<String, Integer> comprobarAciertos(LocalDate fecha, Combinacion combinacion) throws HistorialException{
 		

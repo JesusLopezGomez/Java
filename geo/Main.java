@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import geo.model.City;
 import geo.model.Country;
+import geo.model.GeneradorArchivo;
 
 public class Main {
 
@@ -18,14 +19,23 @@ public class Main {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
+		 
 		try {
 			city = new City("582","Yamuna Nagar");
 			System.out.println(city);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 		
+		
+		System.out.println("Hola");
+		GeneradorArchivo c;
+		try {
+			c = new GeneradorArchivo();
+			c.geneadorArchivo();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println("Hola");
 		
