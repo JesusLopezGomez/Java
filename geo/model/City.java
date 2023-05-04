@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class City {
@@ -31,10 +32,12 @@ public class City {
 		
 		linea = buffer.readLine();
 		
+		String[] arrayLinea;
 		while(linea != null) {
-			String[] arrayLinea = linea.split(",");
+			arrayLinea = linea.split(",");
+			
 			try {
-				if(arrayLinea[3] != null && arrayLinea[3].equals(this.city)) {
+				if(arrayLinea[4].equals(this.cityId)) {
 					this.listAddress.add(new Address(arrayLinea[0], arrayLinea[1]));
 				}
 			}catch(ArrayIndexOutOfBoundsException e) {
@@ -44,9 +47,16 @@ public class City {
 
 			
 		}
+		buffer.close();
 	}
 	
+	public int getSizeAddres() {
+		return this.listAddress.size();
+	}
 	
+	public String getName() {
+		return this.city;
+	}
 	@Override
 	public String toString() {
 		return String.format("City id: %s, city: %s, list address: %s ", this.cityId,this.city,this.listAddress);

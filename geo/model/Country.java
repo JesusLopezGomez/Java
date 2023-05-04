@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Country {
@@ -19,7 +20,7 @@ public class Country {
 		this.country = country;
 		this.listCity = new ArrayList<>();
 		addCity();
-		
+		Collections.sort(this.listCity, new OrdenarPorTamannioAddressComparator<>());
 	}
 	
 	public void addCity() throws IOException {
@@ -40,7 +41,7 @@ public class Country {
 			}
 			linea = buffer.readLine();
 		}
-		
+		buffer.close();
 	}
 
 	@Override

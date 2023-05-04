@@ -14,13 +14,14 @@ public class Main {
 		City city = null;
 
 		try {
-			country = new Country("1", "Afghanistan");
+			country = new Country("2","Algeria");
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		
 		try {
-			city = new City("10","Akishima");
+			city = new City("582","Yamuna Nagar");
+			System.out.println(city);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
