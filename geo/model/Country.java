@@ -23,7 +23,7 @@ public class Country {
 	}
 	
 	public void addCity() throws IOException {
-		File f = new File("D:\\Donwloads\\city.txt");
+		File f = new File("/home/estudiante/Downloads/city.txt");
 		
 		BufferedReader buffer = new BufferedReader(new FileReader(f));
 		
@@ -34,7 +34,10 @@ public class Country {
 		String[] lineaArray;
 		while(linea != null) {
 			lineaArray = linea.split(",");
-			this.listCity.add(new City(lineaArray[0],lineaArray[1]));
+			
+			if(lineaArray[2].equals(this.country_id)) {
+				this.listCity.add(new City(lineaArray[0],lineaArray[1]));
+			}
 			linea = buffer.readLine();
 		}
 		

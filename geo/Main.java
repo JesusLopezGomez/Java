@@ -12,18 +12,18 @@ public class Main {
 		
 		Country country = null;
 		City city = null;
-		try {
-			 city = new City("1", "A Corua La Corua");
-		} catch (IOException e2) {
-			e2.printStackTrace();
-		}
+
 		try {
 			country = new Country("1", "Afghanistan");
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
 		
-		
+		try {
+			city = new City("10","Akishima");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 		
 		System.out.println("Hola");

@@ -23,7 +23,7 @@ public class City {
 	}
 	
 	public void addAddress() throws IOException {
-		File f = new File("\\D:\\Donwloads\\address.txt");
+		File f = new File("/home/estudiante/Downloads/address.txt");
 		
 		BufferedReader buffer = new BufferedReader(new FileReader(f));
 			
@@ -33,8 +33,16 @@ public class City {
 		
 		while(linea != null) {
 			String[] arrayLinea = linea.split(",");
-			this.listAddress.add(new Address(arrayLinea[0], arrayLinea[1]));
+			try {
+				if(arrayLinea[3] != null && arrayLinea[3].equals(this.city)) {
+					this.listAddress.add(new Address(arrayLinea[0], arrayLinea[1]));
+				}
+			}catch(ArrayIndexOutOfBoundsException e) {
+				
+			}
 			linea = buffer.readLine();
+
+			
 		}
 	}
 	
