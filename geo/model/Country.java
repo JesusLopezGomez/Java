@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Country {
 
@@ -23,8 +24,8 @@ public class Country {
 		Collections.sort(this.listCity, new OrdenarPorTamannioAddressComparator<>());
 	}
 	
-	public void addCity() throws IOException {
-		File f = new File("/home/estudiante/Downloads/city.txt");
+	private void addCity() throws IOException {
+		File f = new File("\\D:\\Donwloads\\city.txt");
 		
 		BufferedReader buffer = new BufferedReader(new FileReader(f));
 		
@@ -43,10 +44,34 @@ public class Country {
 		}
 		buffer.close();
 	}
+ 
+	public String ciudadesToString() {
+		StringBuilder sb = new StringBuilder();
+		for(City c : this.listCity) {
+			sb.append(c.toString()).append(System.lineSeparator());
+		}
+		return sb.toString();
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(country, country_id);
+	}
+
+	@Override
+    public boolean equals(Object obj) {
+        return this==obj || obj!=null &&
+                obj instanceof Country
+                && this.hashCode()==((Country)obj).hashCode();
+    }
 
 	@Override
 	public String toString() {
-		return String.format("Country id: %s, country: %s, list city: %s ", this.country_id,this.country,this.listCity);
+		return String.format("Country id: %s, country: %s%n"
+							+ "		 Cities:%s%n"
+							+ "%n"
+							+ "%s", 
+							this.country_id,this.country,this.listCity.size(),ciudadesToString());
 	}
 	
 	

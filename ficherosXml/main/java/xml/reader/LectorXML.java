@@ -49,7 +49,7 @@ public class LectorXML {
 				listaEstudiantes.add(estudiante);
 
 			}
-			
+		
 			
 		} catch (ParserConfigurationException | SAXException | IOException e) {
 		}
