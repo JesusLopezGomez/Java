@@ -23,7 +23,7 @@ public class City {
 	}
 	
 	private void addAddress() throws IOException {
-		File f = new File("\\D:\\Donwloads\\address.txt");
+		File f = new File("/home/estudiante/Downloads/address.txt");
 		
 		BufferedReader buffer = new BufferedReader(new FileReader(f));
 			

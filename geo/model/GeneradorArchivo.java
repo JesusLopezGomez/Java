@@ -20,7 +20,7 @@ public class GeneradorArchivo {
 	}
 	
 	private void addCountry() throws IOException {
-		File f = new File("\\D:\\Donwloads\\country.txt");
+		File f = new File("/home/estudiante/Downloads/country.txt");
 		
 		BufferedReader buffer = new BufferedReader(new FileReader(f));
 		
@@ -40,7 +40,7 @@ public class GeneradorArchivo {
 	}
 	
 	public void geneadorArchivo() throws IOException {
-		File f = new File("\\D:\\Donwloads\\generado.txt");
+		File f = new File("/home/estudiante/Downloads/generado.txt");
 		
 		f.createNewFile();
 		

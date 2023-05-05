@@ -25,7 +25,7 @@ public class Country {
 	}
 	
 	private void addCity() throws IOException {
-		File f = new File("\\D:\\Donwloads\\city.txt");
+		File f = new File("/home/estudiante/Downloads/city.txt");
 		
 		BufferedReader buffer = new BufferedReader(new FileReader(f));
 		
