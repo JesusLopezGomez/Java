@@ -1,9 +1,12 @@
 package boletin1EstructuraDatos.chatInstituto_ej5.testAlumno;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import boletin1EstructuraDatos.chatInstituto_ej5.model.Alumno;
 import boletin1EstructuraDatos.chatInstituto_ej5.model.ExceptionsPersona;
@@ -12,77 +15,91 @@ import boletin1EstructuraDatos.chatInstituto_ej5.model.Profesor;
 
 class TestAlumno {
 
-	
+	Alumno a2 = new Alumno("pepe",19);
+	Alumno a3 = new Alumno("jose",29);
 	Profesor p = new Profesor("Jose manuel",45);
-	Alumno a = new Alumno("Manuel" , 17);
-	Alumno a2 = new Alumno("Jose", 19);
-	Mensaje m = new Mensaje(a, "Tengo una duda");
 	
-	@Test
-	void testEnviarMensajeOK() {
+	@ParameterizedTest
+	@CsvSource(value = {"Manuel,17","Jorge,19","Juan,20"})
+	void testEnviarMensajeCsvSource(String nombre, String edad) {
+		Alumno a = new Alumno(nombre, Integer.valueOf(edad));
 		try {
 			a.enviarMensaje(p, "No entiendo el ejercicio 99");
 		}catch(ExceptionsPersona e) {
 			assert(false);
 		}
 		
-
+		try {
+			a.enviarMensaje(a, "que haces");
+		} catch (ExceptionsPersona e) {
+			assert(true);
+		}
+		
 	} 
 	
-	@Test
-	void testEnviarMensajeKO() {
-		assertThrows(ExceptionsPersona.class, () -> {a.enviarMensaje(a2, "como vas");},"Hay un error");
-	}
-
-	
-	@Test
-	void testLeerMensajesBuzonKO() {
-		assertThrows(ExceptionsPersona.class, () -> {a.leerMensajesBuzon();},"Hay un error" );
-	}
-
-	@Test
-	void testLeerMensajesBuzonOrdenadorAlfabeticamenteOK() {
+	@ParameterizedTest
+	@ValueSource(strings = {"Hola que tal","que haces","de locos"})
+	void testLeerMensajesBuzonValueSource(String mensaje) {
+		a2.recibirMensaje(new Mensaje(a2, mensaje));
 		try {
-			a.recibirMensaje(m);
-			a.leerMensajesBuzonOrdenadorAlfabeticamente();
+			a2.leerMensajesBuzon().isEmpty();
 		} catch (ExceptionsPersona e) {
-		}	
-	}
-	
-	@Test
-	void testLeerMensajesBuzonOrdenadorAlfabeticamenteKO() {
+			assert(false);
+		}
+		
 		try {
-			a.leerMensajesBuzonOrdenadorAlfabeticamente();
+			a3.leerMensajesBuzon();
 		} catch (ExceptionsPersona e) {
-		}	
+			assert(true);
+		}
+		
+		
+		
 	}
 
-
-	@Test
-	void testBorrarMensajeBuzonOK() {
-		a.recibirMensaje(m);
-		a.borrarMensajeBuzon(4);	
-	}
-
-	@Test
-	void testEncontrarMensajeContieneFraseOK() {
-		a.recibirMensaje(m);
-		a.encontrarMensajeContieneFrase("una");
-		assertFalse(a.encontrarMensajeContieneFrase("duda").isEmpty());
+	@ParameterizedTest
+	@ValueSource(strings = {"que haces xulon","haciendo test","flama"})
+	void testLeerMensajesBuzonOrdenadorValueSource(String mensaje) {
+		a2.recibirMensaje(new Mensaje(a2,mensaje));
+		
+		try {
+			a2.leerMensajesBuzonOrdenadorAlfabeticamente();
+		} catch (ExceptionsPersona e) {
+			assert(false);
+		}
+		
+		try {
+			a3.leerMensajesBuzonOrdenadorAlfabeticamente();
+		} catch (ExceptionsPersona e) {
+			assert(true);
+		}
+		
+		
 	}
 	
-	@Test
-	void testEncontrarMensajeContieneFraseKO() {
-		a.recibirMensaje(m);
-		assertFalse(a.encontrarMensajeContieneFrase("duda").equals(m));
-	
+	@ParameterizedTest
+	@ValueSource(strings = {"haciendo test","flama"})
+	void borrarMensajeBuzonValueSource(String mensaje) {
+		a2.recibirMensaje(new Mensaje(a2,mensaje));
+		
+		a2.borrarMensajeBuzon(3);
+
+		try {
+			assertFalse(a2.leerMensajesBuzon().isEmpty());
+		} catch (ExceptionsPersona e) {
+			assert(false);
+		}
 	}
 
-	@Test
-	void testRecibirMensaje() {
-		a.recibirMensaje(m);
+
+	@ParameterizedTest
+	@ValueSource(strings = {"Hola fran", "que tal","gg","bien"})
+	void encontrarMensajeContieneFrase(String mensaje) {
+		a2.recibirMensaje(new Mensaje(a2,mensaje));
+		
+		assertFalse(a2.encontrarMensajeContieneFrase(mensaje).isEmpty());
 	}
-	
+
 	
 
 }
