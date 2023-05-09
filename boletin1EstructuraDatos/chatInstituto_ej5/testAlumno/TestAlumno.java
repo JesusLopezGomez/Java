@@ -55,7 +55,7 @@ class TestAlumno {
 			a2 = new Alumno("pepito",Integer.valueOf(edad));
 			try {
 				a.enviarMensaje(a2, "que haces");
-			} catch (ExceptionsPersona e) {
+			} catch (ExceptionsPersona e) { 
 				assert(true);
 			}
 		}else {
