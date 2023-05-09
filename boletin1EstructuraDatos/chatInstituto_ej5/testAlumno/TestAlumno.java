@@ -45,7 +45,7 @@ class TestAlumno {
 	} 
 	
 	@ParameterizedTest
-	@CsvFileSource(files = {"./files/testEnviarMensajeAlumno.csv"})
+	@CsvFileSource(files  = {"./files/testEnviarMensajeAlumno.csv"})
 	void testEnviarMensajeCsvFile(String nombre, String edad) {
 		Alumno a = new Alumno("pepe",Integer.valueOf(edad));
 		Alumno a2 = null;
