@@ -1,8 +1,8 @@
 package plataformaOnline.model;
 
-import java.io.BufferedWriter;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -10,6 +10,20 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 public class Catalogo {
 
@@ -20,6 +34,37 @@ public class Catalogo {
 	 */
 	public Catalogo() {
 		mapSeries=new HashMap<String, Serie>();
+	}
+	
+	public Catalogo(String ruta) {
+		mapSeries=new HashMap<String, Serie>();
+		
+		File f = new File(ruta);
+		
+		try {
+			FileReader fw = new FileReader(f);
+			BufferedReader bw = new BufferedReader(fw);
+			
+			String linea = bw.readLine();
+			
+			linea = bw.readLine();
+			
+			String[] lineaArray;
+
+			while(linea != null) {
+				lineaArray = linea.split(",");
+				
+				mapSeries.put(lineaArray[0],new Serie(lineaArray[1], Integer.valueOf(lineaArray[2]), Tema.valueOf(lineaArray[3])));
+				
+				linea = bw.readLine();
+			}
+			
+			fw.close();
+			bw.close();
+		} catch (IOException | NumberFormatException | SerieException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
@@ -167,6 +212,64 @@ public class Catalogo {
 			}
 		}
 		writer.close();
+	}
+	
+	public void generarFicheroXmlCatalogo(String ruta) {
+		try {
+			Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+			
+			Element nodoRaiz = doc.createElement("Series");
+			doc.appendChild(nodoRaiz);
+			
+			for(Serie s: this.mapSeries.values()) {
+				Element primerNodoHIjo = doc.createElement("Serie");
+				nodoRaiz.appendChild(primerNodoHIjo);
+			
+				Element nombreSerie = doc.createElement("nombreSerie");
+				nombreSerie.appendChild(doc.createTextNode(s.getNombreSerie()));
+				primerNodoHIjo.appendChild(nombreSerie);
+				
+				Element temporadas = doc.createElement("temporadas");
+				primerNodoHIjo.appendChild(temporadas);
+				
+				Element temporada = doc.createElement("temporada");
+				temporadas.appendChild(temporada);
+				
+				for(Temporada t : s.getTemporadas()) {
+					Element nombreTemporada = doc.createElement("nombre");
+					nombreTemporada.appendChild(doc.createTextNode(t.getNombreTemporada()));
+					temporada.appendChild(nombreTemporada);
+
+					
+					Element capitulos = doc.createElement("capitulos");
+					temporada.appendChild(capitulos);
+					
+					Element numCapitulosTemporada = doc.createElement("numero");
+					numCapitulosTemporada.appendChild(doc.createTextNode(""+t.getCapitulos().size()));
+					capitulos.appendChild(numCapitulosTemporada);
+					
+					for(String str : t.getCapitulos()) {
+						Element capitulo = doc.createElement("capitulo");
+						Element nombreCap = doc.createElement("nombre");
+						nombreCap.appendChild(doc.createTextNode(str));
+						capitulo.appendChild(nombreCap);
+						capitulos.appendChild(capitulo);
+					}
+					
+				}
+				
+			}
+			
+			Transformer optimus = TransformerFactory.newInstance().newTransformer();
+			DOMSource source = new DOMSource(doc);
+			StreamResult result = new StreamResult(new File(ruta));
+			
+			optimus.setOutputProperty(OutputKeys.INDENT, "yes");
+			
+			optimus.transform(source, result);
+		} catch (ParserConfigurationException | TransformerException | TransformerFactoryConfigurationError e) {
+			e.printStackTrace();
+		}
 	}
 	
 

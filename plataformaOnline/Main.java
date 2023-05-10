@@ -82,6 +82,10 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		Catalogo netflix = new Catalogo("./files/catalogo.csv");
+		
+		series.generarFicheroXmlCatalogo("./files/catalogo.xml");
 	}
 	
 	

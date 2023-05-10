@@ -178,7 +178,7 @@ public class Serie implements Comparable<Serie>{
 	 * toString
 	 */
 	public String toString() {
-		return  "Serie " + nombreSerie + " Anno " + anno + " Tema " + tema + "Numero temporadadas " + numeroTemporadas();
+		return  "Serie " + nombreSerie + " Anno " + anno + " Tema " + tema + " Numero temporadadas " + numeroTemporadas();
 	}
 
 	@Override
