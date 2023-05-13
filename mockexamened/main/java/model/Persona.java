@@ -29,7 +29,7 @@ public class Persona {
 	}
 	
 	public Persona(String nombre, String apellido, String dni, LocalDate fechaNacimiento, String genero) {
-		this();
+		this(); 
 		if(validarDatos(nombre, apellido, dni, fechaNacimiento, genero)) {
 			this.nombre = nombre;
 			this.apellido = apellido;
@@ -47,27 +47,23 @@ public class Persona {
 	}
 	
 	public boolean validarDatos(String nombre, String apellido, String dni, LocalDate fechaNacimiento, String genero) {
-		
-		boolean datos = validarDatos(nombre, apellido, dni);
-		
-		boolean fechaGenero = validarFechaGenero(fechaNacimiento, genero);
-		
-		return datos && fechaGenero;
+		return validarDatos(nombre, apellido, dni) && validarFechaGenero(fechaNacimiento, genero);
 	}
 
 	private boolean validarFechaGenero(LocalDate fechaNacimiento, String genero) {
 		boolean resultado = true;
+		
 		if (fechaNacimiento == null) {
 			resultado = false;
 		}
 		if(fechaNacimiento != null && fechaNacimiento.isAfter(LocalDate.now())) {
 			resultado = false;
 		}
-		if (genero == null || genero.isEmpty()) {
+		if (genero == null || genero.isEmpty()) { 
 			resultado = false;
 		}
 
-		if(!Genero.HOMBRE.equals(Genero.valueOf(genero)) && !Genero.MUJER.equals(Genero.valueOf(genero))) {
+		if(genero != null && !Genero.HOMBRE.toString().equals(genero.toUpperCase()) && !Genero.MUJER.toString().equals(genero.toUpperCase())) {
 			resultado = false;
 		}
 		return resultado;
@@ -85,20 +81,20 @@ public class Persona {
 		}
 
 		if (dni == null || dni.isEmpty()) {
-			resultado = false;
+			resultado = false; 
 		}
 
-		if(dni == null && (dni.length() < 9 || Character.isDigit(dni.charAt(8)))) {
+		if((dni != null && dni.isEmpty()) && (dni.length() < 9 || Character.isDigit(dni.charAt(8)))) {
 			resultado = false;
 		}
 		
-		for(int i=0; dni != null && i<dni.length()-1; i++) {
+		for(int i=0; dni != null && !dni.isEmpty() && i<dni.length()-1; i++) {
 			if(Character.isAlphabetic(dni.charAt(i))) {
 				resultado = false;
 			}
 		}
 
-		if (dni==null && "TRWAGMYFPDXBNJZSQVHLCKE".charAt(Integer.valueOf(dni.substring(0, 8))%23)!= dni.toUpperCase().charAt(8)) {
+		if (resultado && !dni.isEmpty()&&"TRWAGMYFPDXBNJZSQVHLCKE".charAt(Integer.valueOf(dni.substring(0, 8))%23)!=dni.toUpperCase().charAt(8)) {
 			resultado = false;
 		}
 		
@@ -121,10 +117,11 @@ public class Persona {
 	}
 	
 	public int obtenerEdadPara(int year) {
+		int resultado = -1;
 		if(year>=this.fechaNacimiento.getYear()) {
-			return year-this.fechaNacimiento.getYear();
+			resultado =  year-this.fechaNacimiento.getYear();
 		}
-		return -1;
+		return resultado;
 	}
 
 
