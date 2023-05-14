@@ -1,6 +1,5 @@
 package mockexamened.test.java;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -9,6 +8,7 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import mockexamened.main.java.model.Persona;
 import mockexamened.main.java.model.PersonaException;
@@ -155,6 +155,18 @@ class testPersona {
 		assertTrue(p.obtenerEdadPara(annio) == edad);
 		
 	}
+/*	
+	@ParameterizedTest
+	@MethodSource("anniosList")
+	void testObtenerEdadPara2(int annio) {
+		Persona p = null;
+		try {
+			p = new Persona("loco","gomez","24483609V",LocalDate.of(2003, 11, 19),"HOMBRE");
+		} catch (PersonaException e) {
+			assert(false);
+		}
+		assertTrue(p.obtenerEdadPara(annio));
+	}*/
 
 	
 }
