@@ -1,5 +1,4 @@
-package mockexamened.main.java.model;
-
+package mockexameneddos.main.java.model;
 @SuppressWarnings("serial")
 public class PersonaException extends RuntimeException {
 

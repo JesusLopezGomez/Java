@@ -1,5 +1,4 @@
-package mockexamened.main.java.model;
-
+package mockexameneddos.main.java.model;
 public enum Genero {
 	HOMBRE(0), MUJER(1);
 
