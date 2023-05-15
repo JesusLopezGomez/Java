@@ -4,9 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -155,18 +157,30 @@ class testPersona {
 		assertTrue(p.obtenerEdadPara(annio) == edad);
 		
 	}
-/*	
+
+	static Stream<Arguments> anniosList(){
+		return Stream.of(
+				Arguments.of(2004,1),
+				Arguments.of(2005,2)
+				);
+	}
+	
+
+
 	@ParameterizedTest
 	@MethodSource("anniosList")
-	void testObtenerEdadPara2(int annio) {
+	void testObtenerEdadPara2(int annio, int edad) {
 		Persona p = null;
 		try {
 			p = new Persona("loco","gomez","24483609V",LocalDate.of(2003, 11, 19),"HOMBRE");
 		} catch (PersonaException e) {
 			assert(false);
 		}
-		assertTrue(p.obtenerEdadPara(annio));
-	}*/
+		assertTrue(p.obtenerEdadPara(annio) == edad);
+	}
+	
+
+	
 
 	
 }

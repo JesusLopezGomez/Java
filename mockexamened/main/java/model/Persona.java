@@ -136,10 +136,7 @@ public class Persona {
 		return resultado;
 	}
 	
-	public static List<String> anniosList(){
-		return Arrays.asList("2004","2005","2006");
-	}
-	
+
 	public String getNombre() {
 		return nombre;
 	}
