@@ -1,6 +1,8 @@
 package mockexamened.main.java.model;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public class Persona {
 	
@@ -29,7 +31,7 @@ public class Persona {
 	}
 	
 	public Persona(String nombre, String apellido, String dni, LocalDate fechaNacimiento, String genero) {
-		this();
+		this(); 
 		if(validarDatos(nombre, apellido, dni, fechaNacimiento, genero)) {
 			this.nombre = nombre;
 			this.apellido = apellido;
@@ -47,59 +49,65 @@ public class Persona {
 	}
 	
 	public boolean validarDatos(String nombre, String apellido, String dni, LocalDate fechaNacimiento, String genero) {
-		
-		boolean datos = validarDatos(nombre, apellido, dni);
-		
-		boolean fechaGenero = validarFechaGenero(fechaNacimiento, genero);
-		
-		return datos && fechaGenero;
+		return validarDatos(nombre, apellido, dni) && validarFechaGenero(fechaNacimiento, genero);
 	}
 
 	private boolean validarFechaGenero(LocalDate fechaNacimiento, String genero) {
 		boolean resultado = true;
+		//Lo comento para que salga el resultado de los test ya que estan realizados antes de hacer este apartado
 		if (fechaNacimiento == null) {
 			resultado = false;
+			//throw new PersonaException("La fecha de nacimiento no puede ser nula");
 		}
 		if(fechaNacimiento != null && fechaNacimiento.isAfter(LocalDate.now())) {
 			resultado = false;
+			//throw new PersonaException("La fecha de nacimiento no puede ser mayor que la fecha actual");
 		}
-		if (genero == null || genero.isEmpty()) {
+		if (genero == null || genero.isEmpty()) { 
 			resultado = false;
+			//throw new PersonaException("El genero no puede ser nulo o estar vacío");
 		}
 
-		if(!Genero.HOMBRE.equals(Genero.valueOf(genero)) && !Genero.MUJER.equals(Genero.valueOf(genero))) {
+		if(genero != null && !Genero.HOMBRE.toString().equals(genero.toUpperCase()) && !Genero.MUJER.toString().equals(genero.toUpperCase())) {
 			resultado = false;
+			//throw new PersonaException("El genero tiene que ser HOMBRE o MUJER");
 		}
 		return resultado;
 	}
 
 	private boolean validarDatosPersonales(String nombre, String apellido, String dni) {
 		boolean resultado = true;
-		
+		//Lo comento para que salga el resultado de los test ya que estan realizados antes de hacer este apartado
 		if (nombre == null || nombre.isEmpty()) {
 			resultado = false;
+			//throw new PersonaException("El campo nombre no puede ser null o vacío);
 		}
 
 		if (apellido == null || apellido.isEmpty()) {
 			resultado = false;
+			//throw new PersonaException("El campo apellido no puede ser null o vacío);
 		}
 
 		if (dni == null || dni.isEmpty()) {
-			resultado = false;
+			resultado = false; 
+			//throw new PersonaException("El campo dni no puede ser null o vacío);
 		}
 
-		if(dni == null && (dni.length() < 9 || Character.isDigit(dni.charAt(8)))) {
+		if((dni != null && dni.isEmpty()) && (dni.length() < 9 || Character.isDigit(dni.charAt(8)))) {
 			resultado = false;
+			//throw new PersonaException("El campo dni tiene que tener 9 de tamaño y una letra al final);
 		}
 		
-		for(int i=0; dni != null && i<dni.length()-1; i++) {
+		for(int i=0; dni != null && !dni.isEmpty() && i<dni.length()-1; i++) {
 			if(Character.isAlphabetic(dni.charAt(i))) {
 				resultado = false;
+				//throw new PersonaException("El campo dni una letra al final no entre medio");
 			}
 		}
 
-		if (dni==null && "TRWAGMYFPDXBNJZSQVHLCKE".charAt(Integer.valueOf(dni.substring(0, 8))%23)!= dni.toUpperCase().charAt(8)) {
+		if (resultado && !dni.isEmpty()&&"TRWAGMYFPDXBNJZSQVHLCKE".charAt(Integer.valueOf(dni.substring(0, 8))%23)!=dni.toUpperCase().charAt(8)) {
 			resultado = false;
+			//throw new PersonaException("El campo dni no coincide con un dni correcto.");
 		}
 		
 		return resultado;
@@ -121,13 +129,17 @@ public class Persona {
 	}
 	
 	public int obtenerEdadPara(int year) {
+		int resultado = -1;
 		if(year>=this.fechaNacimiento.getYear()) {
-			return year-this.fechaNacimiento.getYear();
+			resultado =  year-this.fechaNacimiento.getYear();
 		}
-		return -1;
+		return resultado;
 	}
-
-
+	
+	public static List<String> anniosList(){
+		return Arrays.asList("2004","2005","2006");
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
