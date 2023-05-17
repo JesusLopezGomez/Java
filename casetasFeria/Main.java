@@ -13,6 +13,7 @@ public class Main {
 
 	public static void main(String[] args) {		
 		Feria f = new Feria("./files/casetasferia.xml");
+		f.leerJson();
 		String menu = "1. Mostrar todas las casetas existentes en una calle.\r\n"
 				+ "2. Mostrar todas las casetas de tipo familiar.\r\n"
 				+ "3. Mostrar todas las casetas de tipo Distrito\r\n"
@@ -26,11 +27,8 @@ public class Main {
 		
 		int opcion = 0;
 		Scanner sc = new Scanner(System.in);
-		try {
-			f.exportarJson();
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+		
+		
 		
 		while(opcion != 8) {
 			System.out.println(menu);

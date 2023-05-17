@@ -2,6 +2,8 @@ package casetasFeria.model;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class Feria {
 
@@ -27,7 +30,7 @@ public class Feria {
 	
 	public Feria(String ruta) {
 		super();
-		this.listaCasetas = cargarCasetas(ruta);
+		this.listaCasetas = new ArrayList<>();
 	}
 	
 	public List<Caseta> cargarCasetas(String ruta){
@@ -156,13 +159,32 @@ public class Feria {
 	public void exportarJson() throws IOException {
 		File exportadoJsonCaseta = new File("./files/casetas.json");
 		exportadoJsonCaseta.createNewFile();
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setPrettyPrinting().enableComplexMapKeySerialization().create();
 		String datos = gson.toJson(this.listaCasetas);
 		FileWriter fw = new FileWriter(exportadoJsonCaseta);
 		BufferedWriter bw = new BufferedWriter(fw);
 		bw.append(datos);
 		bw.close();
 		fw.close();
+	}
+	
+	public void leerJson() {
+		try {
+			FileReader fw = new FileReader(new File("./files/casetas.json"));
+			Gson gson = new GsonBuilder().create();
+			
+			Caseta[] casetas = gson.fromJson(fw, Caseta[].class);
+			
+			for(Caseta c : casetas) {
+				this.listaCasetas.add(c);
+			}
+			
+			fw.close();
+			
+		} catch (IOException e) {
+		}
+		
+		
 	}
 
 }
