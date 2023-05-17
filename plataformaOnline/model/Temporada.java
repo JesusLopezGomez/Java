@@ -1,11 +1,13 @@
 package plataformaOnline.model;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Temporada implements Comparable<Temporada>{
 	
 	private String nombreTemporada;  // Nombre de las temporada
-	private LinkedList<String> capitulos; // Lista donde etán los nombres de los capítulos de la temporada
+	private List<String> capitulos; // Lista donde etán los nombres de los capítulos de la temporada
 	private int sumaOpiniones;  // Suma de todas las opiniones que se han realizado de la temporada
 	private int numeroOpiniones; // Número de opiniones que se han realizado de la temporada
 	
@@ -17,7 +19,7 @@ public class Temporada implements Comparable<Temporada>{
 	
 	public Temporada(String nombreTemporada) {
 		this.nombreTemporada=nombreTemporada;
-		capitulos=new LinkedList<String>();
+		capitulos=new ArrayList<String>();
 		sumaOpiniones=0;
 		numeroOpiniones=0;
 	}
@@ -164,7 +166,7 @@ public class Temporada implements Comparable<Temporada>{
 		return nombreTemporada;
 	}
 
-	public LinkedList<String> getCapitulos() {
+	public List<String> getCapitulos() {
 		return capitulos;
 	}
 

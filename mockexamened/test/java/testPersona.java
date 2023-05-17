@@ -164,8 +164,6 @@ class testPersona {
 				Arguments.of(2005,2)
 				);
 	}
-	
-
 
 	@ParameterizedTest
 	@MethodSource("anniosList")

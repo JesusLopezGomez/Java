@@ -23,7 +23,11 @@ public class Main {
 			series.annadirCapituloTemporada("This is us", "Empezamos", "El problema");
 			series.annadirCapituloTemporada("This is us", "Empezamos", "Los niños");
 			series.annadirCapituloTemporada("This is us", "Empezamos", "CAsi el final");
-			series.annadirCapituloTemporada("This is us", "Empezamos", "El final");
+			
+			series.annadirCapituloTemporada("This is us", "Finalizamos", "El inico");
+			series.annadirCapituloTemporada("This is us", "Seguimos", "El fin");
+			series.annadirCapituloTemporada("This is us", "Empezamos", "El finil");
+
 			
 			
 		} catch (SerieException e) {

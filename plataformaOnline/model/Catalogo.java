@@ -169,6 +169,7 @@ public class Catalogo {
 	public  String listadoOrdenadoSeriesDeUnTema(Tema tema)  throws SerieException {
 		StringBuilder sb = new StringBuilder();
 		List<Serie> series = new ArrayList<>();
+		
 		for(String s : this.mapSeries.keySet()) {
 			series.add(this.mapSeries.get(s));
 		}
